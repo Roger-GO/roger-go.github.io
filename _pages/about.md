@@ -38,6 +38,6 @@ Currently pursuing my Ph.D. in Computer Science and Electrical Engineering at ER
 
 This website showcases my publications, research projects, teaching activities, and professional accomplishments. I am always interested in discussing potential collaborations, especially in areas related to resilience engineering, machine learning applications, and complex systems analysis.
 
-For more information about my background, experience, and current projects, please see my [CV](/cv/) or browse through my [publications](/publications/), [awards](/awards/), and [portfolio](/portfolio/).
+For more information about my background, experience, and current projects, please see my [CV](/cv/) or browse through my [publications](/publications/), [awards](/awards/), [work experience](/work/), and [portfolio](/portfolio/).
 
 **Contact**: graciaor@my.erau.edu | [LinkedIn](https://www.linkedin.com/in/rogeliogo/) | +1 386 285 0746

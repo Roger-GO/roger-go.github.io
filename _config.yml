@@ -22,7 +22,7 @@ repository               : "roger-go/roger-go.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile-photo.jpg"
   name             : "Rogelio Gracia Otalvaro"
   pronouns         : # example: "she/her"  
   bio              : "Ph.D. Candidate in Computer Science & Electrical Engineering | Resilience Engineering | Machine Learning | Complex Systems Analysis"
@@ -232,6 +232,9 @@ collections:
   awards:
     output: true
     permalink: /:collection/:path/
+  work:
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -293,6 +296,14 @@ defaults:
   - scope:
       path: ""
       type: awards
+    values:
+      layout: talk
+      author_profile: true
+      share: true
+  # _work
+  - scope:
+      path: ""
+      type: work
     values:
       layout: talk
       author_profile: true
