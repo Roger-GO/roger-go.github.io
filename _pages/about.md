@@ -24,8 +24,7 @@ body {
   background: #fff;
 }
 
-/* Hide default Jekyll elements */
-.masthead,
+/* Hide default Jekyll elements but keep navigation */
 .sidebar,
 .page__footer,
 .page__meta,
@@ -317,98 +316,6 @@ body {
       <p>Ph.D. Candidate in Computer Science and Electrical Engineering at Embry-Riddle Aeronautical University with expertise in resilience engineering, machine learning, and complex systems analysis. Experienced in leading cross-functional research on bifurcation analysis, aerial robotics, and AI applications for critical infrastructure and aerospace, with 10+ conference and symposium publications. Skilled in data analytics, cloud computing, and simulation modeling, applying tools such as Python, MATLAB, AnyLogic, and Power BI to deliver data-driven insights. Proven leader with international experience in academia, research, and industry, combining strong technical expertise with project management, teaching, and mentoring.</p>
     </section>
 
-    <!-- Skills -->
-    <section class="section">
-      <h2>Skills</h2>
-      <div class="skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">MATLAB</span>
-        <span class="skill-tag">Machine Learning</span>
-        <span class="skill-tag">Complex Systems Analysis</span>
-        <span class="skill-tag">Bifurcation Analysis</span>
-        <span class="skill-tag">AnyLogic</span>
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Google Cloud Platform</span>
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">C++</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Unity 3D</span>
-      </div>
-    </section>
-
-    <!-- Research Projects -->
-    <section class="section">
-      <h2>Research Projects</h2>
-      
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">SCEEE Development Grant - Bio-inspired Electrical Grid Design</div>
-            <div class="card-subtitle">Principal Investigator</div>
-          </div>
-          <div class="card-meta">
-            <div>2024-2025</div>
-            <div>$80,000</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <p>Leading research combining biological inspiration, machine learning, and graph theory to improve early-stage electric grid transient response design. This significant research grant supports innovative work at the intersection of biological systems, artificial intelligence, and electrical grid design.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Machine Learning</span>
-            <span class="tech-tag">Graph Theory</span>
-            <span class="tech-tag">Electrical Engineering</span>
-            <span class="tech-tag">Bio-inspired Design</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">UAV Swarm Navigation for Search and Rescue</div>
-            <div class="card-subtitle">Philanthropy Council Grant</div>
-          </div>
-          <div class="card-meta">
-            <div>2024</div>
-            <div>$4,000</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <p>Development of autonomous UAV swarm coordination algorithms for search and rescue mission optimization. Focus on multi-agent systems for emergency response and real-time navigation protocols.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Autonomous Systems</span>
-            <span class="tech-tag">Multi-agent Systems</span>
-            <span class="tech-tag">UAV</span>
-            <span class="tech-tag">Emergency Response</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Complex Systems Resilience Analysis</div>
-            <div class="card-subtitle">Award-winning Research</div>
-          </div>
-          <div class="card-meta">
-            <div>2024</div>
-            <div>2nd Place + People's Choice</div>
-          </div>
-        </div>
-        <div class="card-content">
-          <p>Groundbreaking work applying mathematical bifurcation theory to understand and enhance the resilience of complex systems. Received Second Place and People's Choice Award at Graduate Research Symposium.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Bifurcation Analysis</span>
-            <span class="tech-tag">Complex Systems</span>
-            <span class="tech-tag">Resilience Engineering</span>
-            <span class="tech-tag">Mathematical Modeling</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Experience -->
     <section class="section">
       <h2>Experience</h2>
@@ -480,6 +387,77 @@ body {
       </div>
     </section>
 
+    <!-- Research -->
+    <section class="section">
+      <h2>Research</h2>
+      
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">SCEEE Development Grant - Bio-inspired Electrical Grid Design</div>
+            <div class="card-subtitle">Principal Investigator</div>
+          </div>
+          <div class="card-meta">
+            <div>2024-2025</div>
+            <div>$80,000</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Leading research combining biological inspiration, machine learning, and graph theory to improve early-stage electric grid transient response design. This significant research grant supports innovative work at the intersection of biological systems, artificial intelligence, and electrical grid design.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Machine Learning</span>
+            <span class="tech-tag">Graph Theory</span>
+            <span class="tech-tag">Electrical Engineering</span>
+            <span class="tech-tag">Bio-inspired Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">UAV Swarm Navigation for Search and Rescue</div>
+            <div class="card-subtitle">Philanthropy Council Grant</div>
+          </div>
+          <div class="card-meta">
+            <div>2024</div>
+            <div>$4,000</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Development of autonomous UAV swarm coordination algorithms for search and rescue mission optimization. Focus on multi-agent systems for emergency response and real-time navigation protocols.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Autonomous Systems</span>
+            <span class="tech-tag">Multi-agent Systems</span>
+            <span class="tech-tag">UAV</span>
+            <span class="tech-tag">Emergency Response</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Complex Systems Resilience Analysis</div>
+            <div class="card-subtitle">Award-winning Research</div>
+          </div>
+          <div class="card-meta">
+            <div>2024</div>
+            <div>2nd Place + People's Choice</div>
+          </div>
+        </div>
+        <div class="card-content">
+          <p>Groundbreaking work applying mathematical bifurcation theory to understand and enhance the resilience of complex systems. Received Second Place and People's Choice Award at Graduate Research Symposium.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Bifurcation Analysis</span>
+            <span class="tech-tag">Complex Systems</span>
+            <span class="tech-tag">Resilience Engineering</span>
+            <span class="tech-tag">Mathematical Modeling</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Education -->
     <section class="section">
       <h2>Education</h2>
@@ -537,6 +515,27 @@ body {
             <div>Madrid, Spain</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">Complex Systems Analysis</span>
+        <span class="skill-tag">Bifurcation Analysis</span>
+        <span class="skill-tag">AnyLogic</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Google Cloud Platform</span>
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">C++</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Unity 3D</span>
       </div>
     </section>
 
