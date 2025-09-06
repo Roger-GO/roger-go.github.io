@@ -1,0 +1,67 @@
+/* Custom CSS to override default theme for landing page */
+
+/* Hide navigation, sidebar, and footer on homepage */
+body.layout--single .masthead,
+body.layout--single .sidebar,
+body.layout--single .page__footer {
+  display: none !important;
+}
+
+/* Make main content full width */
+body.layout--single .page {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.layout--single .page__inner-wrap {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.layout--single .page__content {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove default margins and padding */
+body.layout--single {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure full width layout */
+body.layout--single .wide {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Override any container restrictions */
+body.layout--single .container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Remove any default article styling */
+body.layout--single article.page {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide skip links */
+.skip-links {
+  display: none !important;
+}
+
+/* Hide any breadcrumbs */
+.page__meta {
+  display: none !important;
+}
+
+/* Hide page title */
+.page__title {
+  display: none !important;
+} 

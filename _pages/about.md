@@ -9,6 +9,8 @@ layout: single
 classes: wide
 ---
 
+<link rel="stylesheet" href="/assets/css/custom.css">
+
 <style>
 /* Modern Academic Portfolio Styles */
 * {
