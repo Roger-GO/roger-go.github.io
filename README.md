@@ -1,71 +1,83 @@
-# My Portfolio Website
+# Rogelio Gracia - Portfolio Website
 
-<div style="display: flex; align-items: center; justify-content: space-between;">
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 
-[![Built with Next](https://img.shields.io/badge/built%20with-Next.js-000000)](https://nextjs.org)
-[![Deployed on Vercel](https://img.shields.io/badge/deployed%20on-Vercel-000000)](https://vercel.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## About
 
-[![Vercel Deploy](https://deploy-badge.vercel.app/?url=http://www.nextjs.org/&bettinasosa=bettinasosa.com)](https://vercel.com)
-[![Portfolio](https://img.shields.io/badge/link%20to%20website-8A2BE2)](https://www.bettinasosa.com)
+Ph.D. Candidate in Computer Science and Electrical Engineering at Embry-Riddle Aeronautical University with expertise in resilience engineering, machine learning, and complex systems analysis.
 
-</div>
+## Features
 
-<a href="https://www.bettinasosa.com">Visit my portfolio website</a>
+- **Modern Design**: Clean, professional layout with smooth animations
+- **Responsive**: Fully responsive design that works on all devices
+- **Fast Performance**: Built with Next.js for optimal performance
+- **Smooth Animations**: GSAP and Framer Motion animations
+- **TypeScript**: Full type safety throughout the application
+- **Tailwind CSS**: Modern utility-first CSS framework
 
-## Features:
+## Technologies Used
 
-- Fast and performant
-- SEO-friendly
-- Easy to update and maintain
-- Mobile-friendly
-- Responsive design
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- GSAP
+- Lenis (Smooth Scrolling)
 
 ## Getting Started
 
-### Install dependencies
+### Prerequisites
 
-Navigate to your project folder and install its dependencies:
+- Node.js 18+ 
+- npm or yarn
 
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Roger-GO/roger-go.github.io.git
+cd roger-go.github.io
+git checkout nextjs-portfolio
 ```
+
+2. Install dependencies:
+```bash
 npm install
 ```
 
-```
-yarn install
-```
-
-### Start
-
-Once the installation is done, you can now run your app:
-
-```
+3. Run the development server:
+```bash
 npm run dev
 ```
 
-```
-yarn run dev
-```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This runs the app in development mode. Open http://localhost:3000 to view it in the browser.
+## Deployment
 
-### Build
+This portfolio can be deployed on various platforms:
 
-```
-npm run build
-```
+- **Vercel** (Recommended for Next.js)
+- **Netlify**
+- **GitHub Pages** (with GitHub Actions)
 
-```
-yarn build
-```
+For GitHub Pages deployment, you can set your repository's Pages source to the `nextjs-portfolio` branch.
 
-This builds the app for production to the `./dist/` folder.
+## Customization
+
+The portfolio is easily customizable:
+
+- Update personal information in `src/components/home/hero.tsx`
+- Modify the description in `src/components/home/Description/description.tsx`
+- Add your projects in the `src/app/projects/` directory
+- Update contact information in `src/app/contact/`
 
 ## License
 
-This project is licensed under the terms of the MIT license.
+This project is licensed under the MIT License.
 
-### My Portfolio Website
+## Contact
 
-This is my personal portfolio website, showcasing my skills and experience in [list of skills and experience]. It is
-built with Next.js and deployed on Vercel.
+Rogelio Gracia Otalvaro
+- Email: graciaor@my.erau.edu
+- LinkedIn: [rogeliogo](https://www.linkedin.com/in/rogeliogo/)
+- GitHub: [Roger-GO](https://github.com/roger-go)
