@@ -3,27 +3,11 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import { useSpotify } from '@/hooks/useSpotify';
 import Layout from '@/components/layout';
-import { useGitHub } from '@/hooks/useGithub';
-import GitHubContributionsGraph from '@/app/about/githubActivity';
-import SpotifyPlaylists from '@/app/about/spotifyPlaylists';
 import Link from 'next/link';
 
 export default function About() {
   const starsRef = useRef<HTMLDivElement>(null);
-  const {
-    playlists,
-    isLoading: spotifyLoading,
-    error: spotifyError,
-    topTracks
-  } = useSpotify();
-
-  const {
-    githubData,
-    isLoading: githubLoading,
-    error: githubError
-  } = useGitHub();
 
   useEffect(() => {
     // Animate stars
@@ -41,8 +25,8 @@ export default function About() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-purple-200 via-purple-300 to-yellow-200">
-      <Layout title="I'm Bettina" center>
+    <div className="relative overflow-hidden bg-gradient-to-b from-blue-200 via-slate-300 to-blue-200">
+      <Layout title="About Rogelio" center>
         <div className="relative min-h-screen">
           <div ref={starsRef}>
             {[...Array(50)].map((_, i) => (
@@ -67,108 +51,58 @@ export default function About() {
                     width={1440}
                     height={1800}
                     src="/images/profile2.jpg"
-                    alt="Profile picture"
+                    alt="Rogelio Gracia profile picture"
                   />
                 </div>
-                {spotifyLoading ? (
-                  <p>Loading Spotify playlists...</p>
-                ) : spotifyError ? (
-                  <p>Error: {spotifyError}</p>
-                ) : playlists.length > 0 ? (
-                  <SpotifyPlaylists playlists={playlists} />
-                ) : null}
               </div>
 
               <div className="flex flex-col gap-10">
                 <div className="text-primary-950/70 dark:text-primary-200/70 space-y-8">
                   <p className="text-2xl font-semibold">
-                    A software engineer and designer with a passion for
-                    innovation and cutting-edge technology.
+                    Ph.D. Candidate in Computer Science and Electrical Engineering with expertise in resilience engineering, machine learning, and complex systems analysis.
                   </p>
                   <p className="text-lg sm:text-xl">
-                    I have a strong track record of building and deploying
-                    successful products.
+                    Experienced in leading cross-functional research on bifurcation analysis, aerial robotics, and AI applications for critical infrastructure and aerospace.
                   </p>
                   <p className="text-lg sm:text-xl">
-                    At{' '}
+                    Currently Graduate Research / Teaching Assistant at{' '}
                     <Link
-                      href="https://www.sojo.uk/"
+                      href="https://erau.edu/"
                       className="font-semibold underline"
                     >
-                      Sojo
+                      Embry-Riddle Aeronautical University
                     </Link>
-                    , I was the founding full-stack engineer, responsible for
-                    the design, development, and deployment of the
-                    company&apos;s core platform. I built a scalable and
-                    user-friendly app that allowed users to order repairs and
-                    customisation clothing services online.
+                    , leading machine learning and AI data-driven initiatives in the BID4R lab, directing cross-functional research teams.
                   </p>
                   <p className="text-lg sm:text-xl">
-                    After Sojo, I joined{' '}
+                    Published findings in 10+ conference and symposium proceedings including INCOSE and ASME conferences. Developed and delivered course content for 150+ students in Electrical Engineering and Systems courses.
+                  </p>
+                  <p className="text-lg sm:text-xl">
+                    Previously worked as Associate Financial Analyst at{' '}
                     <Link
-                      href="https://www.catapultlabs.xyz/"
+                      href="https://www.linkedin.com/company/imagine-inversion/"
                       className="font-semibold underline"
                     >
-                      Catapult Labs
+                      IMAGINE + INVERSION
                     </Link>
-                    , a startup in the blockchain space, as a founding
-                    full-stack software engineer. I played a key role in the
-                    development of the company&apos;s flagship product, a Web3
-                    profiles platform that enables networking in the
-                    decentralized space.
+                    , where I engineered data mining strategies and achieved 50% reply rates from decision-makers through targeted outreach.
                   </p>
                   <p className="text-lg sm:text-xl">
-                    I then worked on developing decentralised financial
-                    primitives and protocols to enable OTC (Over-The-Counter)
-                    crypto markets on-chain, including collateral management and
-                    margin trading systems. During this time I also learnt
-                    Solidity, to enable the development of smart contracts to
-                    enable new on-chain financial products.
+                    Earlier experience as Project Manager at BALLESOL, where I led the creation and implementation of centralized business models, reducing operational costs by 30% and managing cross-functional teams across multiple facilities.
                   </p>
                   <p className="text-lg sm:text-xl">
-                    In recent months I have been working on an AI co-pilot for
-                    digital asset trading that unifies client conversations
-                    across chat clients like Telegram using OpenAI&apos;s
-                    models.
-                  </p>
-                  <p className="text-lg sm:text-xl">
-                    At Imperial College London, I studied design engineering.
-                    During my time at university, I worked on a number of
-                    projects, including{' '}
-                    <Link
-                      href="/projects/m31"
-                      className="font-semibold underline"
-                    >
-                      Andromeda
-                    </Link>
-                    , which was awarded a gold prize in the Creative Conscience
-                    Awards, and{' '}
-                    <Link
-                      href="/projects/axo"
-                      className="font-semibold underline"
-                    >
-                      AxoWear
-                    </Link>
-                    , which was exhibited at the Design Museum London.
+                    Educational background includes Ph.D. studies at Embry-Riddle (GPA: 4.0/4.0), Master&apos;s in Mechanical Engineering from Embry-Riddle (GPA: 3.83/4.0), and degrees in Industrial Technologies Engineering from ICAI Universidad Pontificia de Comillas, Madrid, Spain.
                   </p>
                 </div>
               </div>
             </div>
             <Link
               className="flex flex-col gap-10 pt-10"
-              href="https://github.com/bettinasosa"
+              href="https://github.com/roger-go"
             >
-              {githubLoading ? (
-                <div></div>
-              ) : githubError ? (
-                <div></div>
-              ) : githubData ? (
-                <GitHubContributionsGraph
-                  contributions={githubData.contributions}
-                  totalContributions={githubData.totalContributions}
-                  restrictedContributions={githubData.restrictedContributions}
-                />
-              ) : null}
+              <div className="text-center">
+                <p className="text-lg text-slate-600">Visit my GitHub profile to see my latest projects and contributions</p>
+              </div>
             </Link>
           </div>
         </div>
