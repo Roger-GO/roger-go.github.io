@@ -6,10 +6,10 @@ import Link from 'next/link';
 
 export default function Description() {
   const phrase1 =
-    'A Ph.D. Candidate in Computer Science and Electrical Engineering with expertise in resilience engineering, machine learning, and complex systems analysis.\n\n ';
+    'Ph.D. Candidate in Computer Science and Electrical Engineering at Embry-Riddle Aeronautical University with expertise in resilience engineering, machine learning, and complex systems analysis.\n\n ';
 
   const phrase2 =
-    'Experienced in leading cross-functional research on bifurcation analysis, aerial robotics, and AI applications for critical infrastructure and aerospace, with 10+ conference and symposium publications.';
+    'Experienced in leading cross-functional research on bifurcation analysis, aerial robotics, and AI applications for critical infrastructure and aerospace, with 10+ conference and symposium publications. Skilled in data analytics, cloud computing, and simulation modeling.';
   const description = useRef(null);
   const isInView = useInView(description);
 

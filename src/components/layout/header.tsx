@@ -58,7 +58,7 @@ export default function Header() {
                 height={32}
                 width={32}
                 src="/images/logo.jpg"
-                alt="Bettinas logo"
+                alt="Rogelio's logo"
                 priority
               />
             </Magnetic>
@@ -67,17 +67,17 @@ export default function Header() {
                 <div className="hover:rotate-[360deg]">©</div>
                 <div className="relative flex overflow-hidden">
                   <div className="ease-custom-cubic transition-transform duration-500 group-hover:translate-x-[-100%]">
-                    coded by
+                    portfolio by
                   </div>
                   <div className="ease-custom-cubic px-1 transition-transform duration-500 group-hover:translate-x-[-65px]">
-                    Bettina
+                    Rogelio
                   </div>
 
                   <div
                     className="ease-custom-cubic
               translate-x-full transition-transform duration-500 group-hover:translate-x-[-65px]"
                   >
-                    Sosa
+                    Gracia
                   </div>
                 </div>
               </>

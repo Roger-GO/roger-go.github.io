@@ -5,7 +5,7 @@ export default function Hero() {
     <div className="relative flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 align-middle">
       <div className="text-center text-white z-10">
         <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-tight">
-          Rogelio Gracia
+          Rogelio Gracia Otalvaro
         </h1>
         <h2 className="text-2xl md:text-4xl font-light mb-6 text-blue-200">
           Ph.D. Candidate
