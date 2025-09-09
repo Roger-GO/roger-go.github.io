@@ -54,7 +54,7 @@ body {
 /* Hero Section */
 .hero {
   background: #f8f9fa;
-  padding: 80px 0;
+  padding: 60px 0;
   text-align: center;
   border-bottom: 1px solid #e9ecef;
 }
@@ -139,7 +139,7 @@ body {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 40px 0;
   border-bottom: 1px solid #f1f3f4;
 }
 
@@ -151,7 +151,7 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   color: #333;
 }
 
@@ -202,8 +202,8 @@ body {
   background: #fff;
   border: 1px solid #e9ecef;
   border-radius: 8px;
-  padding: 30px;
-  margin-bottom: 30px;
+  padding: 25px;
+  margin-bottom: 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
@@ -264,7 +264,7 @@ body {
 .research-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 20px;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -273,7 +273,7 @@ body {
   background: #fff;
   border: 1px solid #e9ecef;
   border-radius: 8px;
-  padding: 30px;
+  padding: 25px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
