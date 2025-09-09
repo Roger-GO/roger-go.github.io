@@ -65,13 +65,13 @@ export default function ContactInfo() {
           </motion.div>
         </div>
         <div className="mt-6 flex gap-5 sm:mx-[100px]">
-          <RoundedButton>bettinasosarohl@gmail.com</RoundedButton>
+          <RoundedButton>graciaor@my.erau.edu</RoundedButton>
         </div>
 
         <div className="mt-20 flex flex-col justify-between p-5 2xs:mt-52 sm:mx-[100px] sm:mt-48 sm:flex-row">
           <p className="min-w-screen mb-5 text-base sm:max-w-xs">
-            AI/LLM enthusiast | Cutting-edge tech advocate | Web3 builder |
-            Passionate about using technology to make the world a better place.
+            Ph.D. Candidate in Computer Science and Electrical Engineering | Resilience Engineering Expert | Machine Learning Researcher | 
+            Passionate about applying technology to solve complex systems challenges.
           </p>
           <div className="flex items-end gap-2">
             <span className="flex flex-col gap-3">
@@ -85,7 +85,7 @@ export default function ContactInfo() {
                 Timezone
               </h3>
               <p className="relative m-0 cursor-pointer p-1">
-                {timeNow} UK (GMT+1)
+                {timeNow} FL (EST)
               </p>
             </span>
           </div>
@@ -96,27 +96,27 @@ export default function ContactInfo() {
               </h3>
               <Magnetic>
                 <Link
-                  href="https://twitter.com/bettysrohl"
+                  href="https://github.com/roger-go"
                   className={animatedUnderlineStyle}
                 >
-                  Twitter
+                  GitHub
                 </Link>
               </Magnetic>
             </span>
             <Magnetic>
               <Link
-                href="https://github.com/bettinasosa"
+                href="https://www.linkedin.com/in/rogeliogo/"
                 className={animatedUnderlineStyle}
               >
-                Github
+                LinkedIn
               </Link>
             </Magnetic>
             <Magnetic>
               <Link
-                href="https://www.linkedin.com/in/bettina-sosa/"
+                href="mailto:graciaor@my.erau.edu"
                 className={animatedUnderlineStyle}
               >
-                Linkedin
+                Email
               </Link>
             </Magnetic>
           </div>
