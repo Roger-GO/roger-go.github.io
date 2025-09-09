@@ -6,13 +6,10 @@ import Link from 'next/link';
 
 export default function Description() {
   const phrase1 =
-    'A software engineer with a passion for innovation and\n' +
-    'cutting-edge technology.\n\n ';
+    'A Ph.D. Candidate in Computer Science and Electrical Engineering with expertise in resilience engineering, machine learning, and complex systems analysis.\n\n ';
 
   const phrase2 =
-    'Particularly interested in the intersection of art, design, and ' +
-    'software. I believe that these disciplines can be combined to ' +
-    'create truly transformative experiences.';
+    'Experienced in leading cross-functional research on bifurcation analysis, aerial robotics, and AI applications for critical infrastructure and aerospace, with 10+ conference and symposium publications.';
   const description = useRef(null);
   const isInView = useInView(description);
 
@@ -61,17 +58,14 @@ export default function Description() {
           animate={isInView ? 'open' : 'closed'}
           className="m-0 pb-3 font-light sm:text-lg"
         >
-          Currently the founding full stack software engineer @Catapult a DeFi
-          startup.
+          Currently Graduate Research / Teaching Assistant at Embry-Riddle Aeronautical University, leading machine learning and AI data-driven initiatives in the BID4R lab.
         </motion.p>
         <motion.p
           variants={opacity}
           animate={isInView ? 'open' : 'closed'}
           className="m-0 text-lg font-light"
         >
-          My projects have received multiple awards in the past, and I am always
-          looking for new and innovative ways to use my skills to make a
-          positive impact on the world.
+          Skilled in data analytics, cloud computing, and simulation modeling, applying tools such as Python, MATLAB, AnyLogic, and Power BI to deliver data-driven insights for complex systems.
         </motion.p>
         <div data-scroll-speed={0.1}>
           <Link href={'/about'}>
