@@ -7,6 +7,11 @@ import { LetterCollision } from '@/components/animations/textAnimations/scrollTe
 import Magnetic from '@/components/animations/magnetic';
 import Hero from '@/components/home/hero';
 import Description from '@/components/home/Description/description';
+import Experience from '@/components/home/Experience';
+import Research from '@/components/home/Research';
+import Education from '@/components/home/Education';
+import Skills from '@/components/home/Skills';
+import ContactInfo from '@/components/home/ContactInfo';
 
 const slider1 = [
   {
@@ -92,7 +97,12 @@ export default function Home() {
         <Hero />
       </div>
       <Description />
+      <Experience />
+      <Research />
+      <Education />
+      <Skills />
       <SlidingImages slider1={slider1} slider2={slider2} />
+      <ContactInfo />
       <ContrastCursor isActive={false} text={'Go to project'} />
     </div>
   );
