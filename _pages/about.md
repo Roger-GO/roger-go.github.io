@@ -54,7 +54,7 @@ body {
 /* Hero Section */
 .hero {
   background: #f8f9fa;
-  padding: 60px 0;
+  padding: 40px 0;
   text-align: center;
   border-bottom: 1px solid #e9ecef;
 }
@@ -139,7 +139,7 @@ body {
 }
 
 .section {
-  padding: 40px 0;
+  padding: 20px 0;
   border-bottom: 1px solid #f1f3f4;
 }
 
@@ -151,7 +151,7 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: #333;
 }
 
@@ -166,7 +166,7 @@ body {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .skills-container {
