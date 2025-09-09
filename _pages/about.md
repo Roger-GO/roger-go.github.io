@@ -488,22 +488,75 @@ body {
         <p class="about-text">
           Ph.D. Candidate in Computer Science and Electrical Engineering at Embry-Riddle Aeronautical University with expertise in resilience engineering, machine learning, and complex systems analysis. Experienced in leading cross-functional research on bifurcation analysis, aerial robotics, and AI applications for critical infrastructure and aerospace, with 10+ conference and symposium publications. Skilled in data analytics, cloud computing, and simulation modeling, applying tools such as Python, MATLAB, AnyLogic, and Power BI to deliver data-driven insights. Proven leader with international experience in academia, research, and industry, combining strong technical expertise with project management, teaching, and mentoring.
         </p>
-        
-        <div class="skills-container">
-          <span class="skill-badge">Python</span>
-          <span class="skill-badge">MATLAB</span>
-          <span class="skill-badge">Machine Learning</span>
-          <span class="skill-badge">Complex Systems Analysis</span>
-          <span class="skill-badge">Bifurcation Analysis</span>
-          <span class="skill-badge">AnyLogic</span>
-          <span class="skill-badge">Power BI</span>
-          <span class="skill-badge">SQL</span>
-          <span class="skill-badge">Google Cloud Platform</span>
-          <span class="skill-badge">PyTorch</span>
-          <span class="skill-badge">C++</span>
-          <span class="skill-badge">JavaScript</span>
-          <span class="skill-badge">React</span>
-          <span class="skill-badge">Unity 3D</span>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h3 class="timeline-title">Graduate Research / Teaching Assistant</h3>
+              <p class="timeline-company">Embry-Riddle Aeronautical University</p>
+            </div>
+            <div class="timeline-meta">
+              <div>Aug 2021 - Present</div>
+              <div>Daytona Beach, FL</div>
+            </div>
+          </div>
+          <div class="timeline-content">
+            <ul>
+              <li>Led machine learning and AI data-driven initiatives in the BID4R lab, directing cross-functional research teams</li>
+              <li>Conducted research in resilience engineering, bifurcation analysis, aerial robotics, and machine learning applications</li>
+              <li>Published findings in 10+ conference and symposium proceedings including INCOSE and ASME conferences</li>
+              <li>Developed and delivered course content for 150+ students in Electrical Engineering and Systems courses</li>
+              <li>Utilized MATLAB, Python, AnyLogic, and Cloud services for complex dynamic systems modeling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h3 class="timeline-title">Associate Financial Analyst</h3>
+              <p class="timeline-company">IMAGINE + INVERSION</p>
+            </div>
+            <div class="timeline-meta">
+              <div>Feb 2021 - Aug 2021</div>
+              <div>Madrid, Spain</div>
+            </div>
+          </div>
+          <div class="timeline-content">
+            <ul>
+              <li>Engineered data mining strategy utilizing SQL and Excel to evaluate 700+ companies</li>
+              <li>Achieved 50% reply rate from decision-makers through targeted outreach strategies</li>
+              <li>Delivered data-driven BI presentations to investment committees</li>
+              <li>Built financial models to assess tech startups' growth potential and investment viability</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h3 class="timeline-title">Project Manager</h3>
+              <p class="timeline-company">BALLESOL</p>
+            </div>
+            <div class="timeline-meta">
+              <div>Oct 2018 - Jan 2020</div>
+              <div>Madrid, Spain</div>
+            </div>
+          </div>
+          <div class="timeline-content">
+            <ul>
+              <li>Led creation and implementation of centralized business model reducing operational costs by 30%</li>
+              <li>Monitored operational efficiency across 45+ residential sites using custom KPIs</li>
+              <li>Reduced delivery timelines by 20% through targeted process improvements</li>
+              <li>Managed cross-functional teams across multiple residential facilities</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -580,76 +633,6 @@ body {
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="section" id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Graduate Research / Teaching Assistant</h3>
-              <p class="timeline-company">Embry-Riddle Aeronautical University</p>
-            </div>
-            <div class="timeline-meta">
-              <div>Aug 2021 - Present</div>
-              <div>Daytona Beach, FL</div>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <ul>
-              <li>Led machine learning and AI data-driven initiatives in the BID4R lab, directing cross-functional research teams</li>
-              <li>Conducted research in resilience engineering, bifurcation analysis, aerial robotics, and machine learning applications</li>
-              <li>Published findings in 10+ conference and symposium proceedings including INCOSE and ASME conferences</li>
-              <li>Developed and delivered course content for 150+ students in Electrical Engineering and Systems courses</li>
-              <li>Utilized MATLAB, Python, AnyLogic, and Cloud services for complex dynamic systems modeling</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Associate Financial Analyst</h3>
-              <p class="timeline-company">IMAGINE + INVERSION</p>
-            </div>
-            <div class="timeline-meta">
-              <div>Feb 2021 - Aug 2021</div>
-              <div>Madrid, Spain</div>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <ul>
-              <li>Engineered data mining strategy utilizing SQL and Excel to evaluate 700+ companies</li>
-              <li>Achieved 50% reply rate from decision-makers through targeted outreach strategies</li>
-              <li>Delivered data-driven BI presentations to investment committees</li>
-              <li>Built financial models to assess tech startups' growth potential and investment viability</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Project Manager</h3>
-              <p class="timeline-company">BALLESOL</p>
-            </div>
-            <div class="timeline-meta">
-              <div>Oct 2018 - Jan 2020</div>
-              <div>Madrid, Spain</div>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <ul>
-              <li>Led creation and implementation of centralized business model reducing operational costs by 30%</li>
-              <li>Monitored operational efficiency across 45+ residential sites using custom KPIs</li>
-              <li>Reduced delivery timelines by 20% through targeted process improvements</li>
-              <li>Managed cross-functional teams across multiple residential facilities</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Education Section -->
     <section class="section" id="education">
       <h2 class="section-title">Education</h2>
@@ -707,6 +690,27 @@ body {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-container">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">MATLAB</span>
+        <span class="skill-badge">Machine Learning</span>
+        <span class="skill-badge">Complex Systems Analysis</span>
+        <span class="skill-badge">Bifurcation Analysis</span>
+        <span class="skill-badge">AnyLogic</span>
+        <span class="skill-badge">Power BI</span>
+        <span class="skill-badge">SQL</span>
+        <span class="skill-badge">Google Cloud Platform</span>
+        <span class="skill-badge">PyTorch</span>
+        <span class="skill-badge">C++</span>
+        <span class="skill-badge">JavaScript</span>
+        <span class="skill-badge">React</span>
+        <span class="skill-badge">Unity 3D</span>
       </div>
     </section>
   </div>
