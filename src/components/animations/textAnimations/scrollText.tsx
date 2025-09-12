@@ -22,47 +22,56 @@ function getRandomRotation() {
 
 const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   const lettersContainer = containerRef.current;
-  const letterElements = lettersContainer?.querySelectorAll('.letter');
+  if (!lettersContainer) return;
+
+  const letterElements = lettersContainer.querySelectorAll('.letter');
+  if (!letterElements.length) return;
+
+  // Clear any existing ScrollTriggers
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
   letterElements.forEach((letter: Element, index: number) => {
+    const htmlElement = letter as HTMLElement;
+    
     // Set initial state
-    gsap.set(letter, { 
+    gsap.set(htmlElement, { 
       y: 0, 
       rotation: 0, 
       opacity: 1, 
       visibility: 'visible' 
     });
 
-    // Create parallax animation with proper movement
-    gsap.to(letter, {
-      y: (i, el) => {
-        const speed = parseFloat(el.getAttribute('data-speed'));
-        // Increase movement range for better effect (200px max)
-        return (1 - speed) * 200;
-      },
-      rotation: getRandomRotation(),
+    const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
+    const rotation = getRandomRotation();
+
+    // Create the main animation
+    gsap.to(htmlElement, {
+      y: (1 - speed) * ScrollTrigger.maxScroll(window) * 0.3,
+      rotation: rotation,
       ease: 'none',
       scrollTrigger: {
         trigger: lettersContainer,
         start: 'top bottom',
         end: 'bottom top',
         scrub: 1,
-        invalidateOnRefresh: true,
-        onLeave: () => {
-          gsap.set(letter, { opacity: 0, visibility: 'hidden' });
-        },
-        onEnterBack: () => {
-          gsap.set(letter, { opacity: 1, visibility: 'visible' });
-        },
-        onLeaveBack: () => {
-          gsap.set(letter, { opacity: 0, visibility: 'hidden' });
-        },
-        onEnter: () => {
-          gsap.set(letter, { opacity: 1, visibility: 'visible' });
-        }
+        invalidateOnRefresh: true
       }
     });
+
+    // Separate ScrollTrigger for visibility
+    ScrollTrigger.create({
+      trigger: lettersContainer,
+      start: 'top bottom',
+      end: 'bottom top',
+      onEnter: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
+      onLeave: () => gsap.set(htmlElement, { opacity: 0, visibility: 'hidden' }),
+      onEnterBack: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
+      onLeaveBack: () => gsap.set(htmlElement, { opacity: 0, visibility: 'hidden' })
+    });
   });
+
+  // Refresh ScrollTrigger after setup
+  ScrollTrigger.refresh();
 };
 
 function LetterDisplay({ word }: { word: string }) {
@@ -82,7 +91,17 @@ export function LetterCollision() {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    animateLettersOnScroll(containerRef);
+    
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      animateLettersOnScroll(containerRef);
+    }, 100);
+
+    // Cleanup function
+    return () => {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
