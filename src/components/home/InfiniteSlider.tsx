@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import './InfiniteSlider.css';
+import styles from './InfiniteSlider.module.css';
 
 const InfiniteSlider = () => {
   // Define all the images
@@ -33,75 +34,99 @@ const InfiniteSlider = () => {
     <div className="relative z-10 mt-[200px] bg-background">
       {/* First Row - Left to Right */}
       <div className="mb-8">
-        <div className="scroller">
-          <ul className="scroller__list">
+        <div className={styles.scroller}>
+          <motion.div
+            className={styles.scroller__inner}
+            animate={{
+              x: '-50%', // This moves the container by half of its total width
+            }}
+            transition={{
+              duration: 40, // Adjust for speed. Higher number = slower scroll
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'linear',
+            }}
+          >
+            {/* Render the images once... */}
             {row1Images.map((image, index) => (
-              <li key={index} className="scroller__item">
+              <div key={index} className={styles.scroller__item}>
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={0}
+                    width={250}
                     height={200}
-                    className="h-[200px] w-auto object-contain"
+                    className="object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
-              </li>
+              </div>
             ))}
-            {/* Duplicate for seamless loop */}
+            {/* ...and then render them again for the seamless loop */}
             {row1Images.map((image, index) => (
-              <li key={`duplicate-${index}`} className="scroller__item" aria-hidden="true">
+              <div key={`duplicate-${index}`} className={styles.scroller__item} aria-hidden="true">
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
                     src={image.src}
                     alt=""
-                    width={0}
+                    width={250}
                     height={200}
-                    className="h-[200px] w-auto object-contain"
+                    className="object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </motion.div>
         </div>
       </div>
 
       {/* Second Row - Right to Left (reversed) */}
       <div className="mb-8">
-        <div className="scroller">
-          <ul className="scroller__list" style={{ animationDirection: 'reverse' }}>
+        <div className={styles.scroller}>
+          <motion.div
+            className={styles.scroller__inner}
+            animate={{
+              x: '50%', // This moves the container by half of its total width in reverse
+            }}
+            transition={{
+              duration: 40, // Adjust for speed. Higher number = slower scroll
+              repeat: Infinity,
+              repeatType: 'loop',
+              ease: 'linear',
+            }}
+          >
+            {/* Render the images once... */}
             {row2Images.map((image, index) => (
-              <li key={`reverse-${index}`} className="scroller__item">
+              <div key={`reverse-${index}`} className={styles.scroller__item}>
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={0}
+                    width={250}
                     height={200}
-                    className="h-[200px] w-auto object-contain"
+                    className="object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
-              </li>
+              </div>
             ))}
-            {/* Duplicate for seamless loop */}
+            {/* ...and then render them again for the seamless loop */}
             {row2Images.map((image, index) => (
-              <li key={`reverse-duplicate-${index}`} className="scroller__item" aria-hidden="true">
+              <div key={`reverse-duplicate-${index}`} className={styles.scroller__item} aria-hidden="true">
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
                     src={image.src}
                     alt=""
-                    width={0}
+                    width={250}
                     height={200}
-                    className="h-[200px] w-auto object-contain"
+                    className="object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </motion.div>
         </div>
       </div>
     </div>

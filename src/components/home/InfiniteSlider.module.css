@@ -1,0 +1,22 @@
+.scroller {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+}
+
+.scroller__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: max-content; /* This is important! */
+}
+
+.scroller__item {
+  flex-shrink: 0;
+}
+
+.scroller__item img {
+  width: 250px; /* Or your desired image width */
+  height: auto;
+  border-radius: 8px;
+}
