@@ -89,30 +89,35 @@ export default function Header() {
             <div className="group relative z-10 flex cursor-pointer flex-col p-3">
               <div className="flex flex-col">
                 <Magnetic>
-                  <Link href={'/about'}>About</Link>
+                  <Link href={'/publications'}>Publications</Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href={'/projects'}>Projects</Link>
+                  <Link href={'/awards'}>Awards</Link>
                 </Magnetic>
               </div>
             </div>
             <div className="group relative z-10 flex cursor-pointer flex-col p-3">
               <div className="flex flex-col">
                 <Magnetic>
-                  <Link href={'/gallery'}>Gallery</Link>
+                  <Link href={'/teaching'}>Teaching</Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href={'/blog'}>Blog</Link>
+                  <Link href={'/work'}>Work</Link>
                 </Magnetic>
               </div>
             </div>
             <div className="group relative z-10 flex cursor-pointer flex-col p-3">
-              <Magnetic>
-                <div className="flex">
-                  <Link href={'/contact'}>Contact</Link>
-                  <ArrowUpRight size={18} />
-                </div>
-              </Magnetic>
+              <div className="flex flex-col">
+                <Magnetic>
+                  <Link href={'/portfolio'}>Portfolio</Link>
+                </Magnetic>
+                <Magnetic>
+                  <div className="flex">
+                    <Link href={'/cv'}>CV</Link>
+                    <ArrowUpRight size={18} />
+                  </div>
+                </Magnetic>
+              </div>
             </div>
           </div>
         )}
