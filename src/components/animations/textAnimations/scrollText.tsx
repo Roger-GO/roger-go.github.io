@@ -45,13 +45,16 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
 
 function LetterDisplay({ word }: { word: string }) {
   return word.split('').map((letter, index) => (
-    <div
+    <span
       key={index}
-      className="letter text-6xl font-semibold xs:text-[90px] xs:leading-none md:text-[120px] lg:text-[150px] xl:text-[210px]"
+      className="letter inline-block text-4xl font-semibold xs:text-5xl xs:leading-none sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
       data-speed={getRandomSpeed()}
+      style={{ 
+        minWidth: letter === ' ' ? '0.5em' : 'auto'
+      }}
     >
-      {letter}
-    </div>
+      {letter === ' ' ? '\u00A0' : letter}
+    </span>
   ));
 }
 
@@ -64,23 +67,19 @@ export function LetterCollision() {
   }, []);
 
   return (
-    <div ref={containerRef} className="ml-8 scroll-smooth">
-      <div className="-mt-28 mb-36 flex h-screen flex-col justify-end lg:mb-24">
-        <div className="flex flex-wrap p-0">
+    <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden h-screen">
+      <div className="-mt-28 mb-36 flex h-full flex-col justify-end lg:mb-24">
+        <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={theBest} />
-          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={wayTo} />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={predict} />
-          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={theFuture} />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={isTo} />
-          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={invent} />
-          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={it} />
         </div>
       </div>
