@@ -60,7 +60,7 @@ export default function ContactInfo() {
               backgroundColor="secondary"
               className=" absolute h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full bg-primary p-0 text-white sm:h-[200px] sm:w-[200px]"
             >
-              <Link href={'/contact'}>Get in touch</Link>
+              <a href="mailto:graciaor@my.erau.edu">Get in touch</a>
             </RoundedButton>
           </motion.div>
         </div>

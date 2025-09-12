@@ -67,13 +67,6 @@ export default function Description() {
         >
           Skilled in data analytics, cloud computing, and simulation modeling, applying tools such as Python, MATLAB, AnyLogic, and Power BI to deliver data-driven insights for complex systems.
         </motion.p>
-        <div data-scroll-speed={0.1}>
-          <Link href={'/about'}>
-            <RoundedButton className="absolute ml-56 mt-6 flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full bg-destructive text-white sm:ml-16 sm:mt-16 sm:h-[200px] sm:w-[200px]">
-              About me
-            </RoundedButton>
-          </Link>
-        </div>
       </div>
     </div>
   );
