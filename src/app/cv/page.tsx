@@ -194,14 +194,16 @@ export default function CV() {
               </div>
             </div>
 
-            <motion.button
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            <motion.a
+              href="/files/RGO_CV2025.pdf"
+              download="Rogelio_Gracia_Otalvaro_CV.pdf"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors no-underline"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Download size={18} />
               Download CV as PDF
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
 
