@@ -50,9 +50,7 @@ const InfiniteSlider = () => {
                 className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
                 style={{ 
                   height: '200px',
-                  width: `${200 * image.aspectRatio}px`,
-                  minWidth: '150px',
-                  maxWidth: '400px'
+                  width: `${200 * image.aspectRatio}px`
                 }}
               >
                 <Image
@@ -82,9 +80,7 @@ const InfiniteSlider = () => {
                 className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
                 style={{ 
                   height: '200px',
-                  width: `${200 * image.aspectRatio}px`,
-                  minWidth: '150px',
-                  maxWidth: '400px'
+                  width: `${200 * image.aspectRatio}px`
                 }}
               >
                 <Image
