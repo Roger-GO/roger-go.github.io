@@ -22,10 +22,18 @@ function getRandomRotation() {
 
 const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   const lettersContainer = containerRef.current;
-  if (!lettersContainer) return;
+  if (!lettersContainer) {
+    console.log('LetterCollision: Container not found');
+    return;
+  }
 
   const letterElements = lettersContainer.querySelectorAll('.letter');
-  if (!letterElements.length) return;
+  if (!letterElements.length) {
+    console.log('LetterCollision: No letter elements found');
+    return;
+  }
+
+  console.log(`LetterCollision: Found ${letterElements.length} letters, starting animation`);
 
   // Clear any existing ScrollTriggers
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -44,9 +52,9 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
     const rotation = getRandomRotation();
 
-    // Create the main animation
+    // Create the main animation with fixed range
     gsap.to(htmlElement, {
-      y: (1 - speed) * ScrollTrigger.maxScroll(window) * 0.3,
+      y: (1 - speed) * 300, // Fixed 300px range instead of maxScroll
       rotation: rotation,
       ease: 'none',
       scrollTrigger: {
