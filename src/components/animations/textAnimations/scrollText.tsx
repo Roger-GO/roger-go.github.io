@@ -4,11 +4,13 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const creativity = 'Creativity ';
-const is = 'is ';
-const my = 'my ';
-const craft = 'craft';
-const sentence3 = 'abstract thinking is my passion';
+const theBest = 'The best ';
+const wayTo = 'way to ';
+const predict = 'predict ';
+const theFuture = 'the future ';
+const isTo = 'is to ';
+const invent = 'invent ';
+const it = 'it';
 
 function getRandomSpeed() {
   const randomDecimal = Math.random();
@@ -23,40 +25,42 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   const letterElements = lettersContainer?.querySelectorAll('.letter');
 
   letterElements.forEach((letter: Element, index: number) => {
-    // Create a more restrictive scroll trigger that hides letters completely when out of view
-    ScrollTrigger.create({
-      trigger: lettersContainer,
-      start: 'top bottom',
-      end: 'bottom top',
-      onEnter: () => {
-        gsap.set(letter, { opacity: 1, visibility: 'visible' });
-      },
-      onLeave: () => {
-        gsap.set(letter, { opacity: 0, visibility: 'hidden' });
-      },
-      onEnterBack: () => {
-        gsap.set(letter, { opacity: 1, visibility: 'visible' });
-      },
-      onLeaveBack: () => {
-        gsap.set(letter, { opacity: 0, visibility: 'hidden' });
-      }
+    // Set initial state
+    gsap.set(letter, { 
+      y: 0, 
+      rotation: 0, 
+      opacity: 1, 
+      visibility: 'visible' 
     });
 
-    // Subtle parallax movement only within the container bounds
+    // Create parallax animation with proper movement
     gsap.to(letter, {
       y: (i, el) => {
         const speed = parseFloat(el.getAttribute('data-speed'));
-        // Much smaller movement range (50px max)
-        return (1 - speed) * 50;
+        // Increase movement range for better effect (200px max)
+        return (1 - speed) * 200;
       },
+      rotation: getRandomRotation(),
       ease: 'none',
       scrollTrigger: {
         trigger: lettersContainer,
         start: 'top bottom',
         end: 'bottom top',
-        scrub: 1
-      },
-      rotation: getRandomRotation()
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onLeave: () => {
+          gsap.set(letter, { opacity: 0, visibility: 'hidden' });
+        },
+        onEnterBack: () => {
+          gsap.set(letter, { opacity: 1, visibility: 'visible' });
+        },
+        onLeaveBack: () => {
+          gsap.set(letter, { opacity: 0, visibility: 'hidden' });
+        },
+        onEnter: () => {
+          gsap.set(letter, { opacity: 1, visibility: 'visible' });
+        }
+      }
     });
   });
 };
@@ -85,18 +89,18 @@ export function LetterCollision() {
     <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden h-screen">
       <div className="-mt-28 mb-36 flex h-full flex-col justify-end lg:mb-24">
         <div className="flex flex-wrap p-0">
-          <LetterDisplay word={creativity} />
-          <div className="w-2 xs:w-4 sm:w-10"></div>
-          <LetterDisplay word={is} />
+          <LetterDisplay word={theBest} />
+          <LetterDisplay word={wayTo} />
         </div>
         <div className="flex flex-wrap">
-          <LetterDisplay word={my} />
-          <div className="w-2 xs:w-4 sm:w-10"></div>
-          <LetterDisplay word={craft} />
+          <LetterDisplay word={predict} />
+          <LetterDisplay word={theFuture} />
         </div>
-      </div>
-      <div className="flex flex-wrap">
-        <LetterDisplay word={sentence3} />
+        <div className="flex flex-wrap">
+          <LetterDisplay word={isTo} />
+          <LetterDisplay word={invent} />
+          <LetterDisplay word={it} />
+        </div>
       </div>
     </div>
   );
