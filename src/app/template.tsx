@@ -6,7 +6,6 @@ import {
   useScroll,
   useTransform
 } from 'framer-motion';
-import ContactInfo from '@/components/home/ContactInfo';
 import { isMobile } from '@/components/util';
 import { clsx } from 'clsx';
 import { usePathname } from 'next/navigation';
@@ -57,7 +56,6 @@ export default function RootTemplate({ children }: PropsWithChildren) {
           ></div>
         </motion.div>
       </div>
-      <ContactInfo />
     </main>
   );
 }
