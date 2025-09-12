@@ -9,7 +9,7 @@ const isTo = 'is to ';
 const invent = 'invent ';
 const it = 'it';
 
-// CSS3-based animation approach inspired by Bettina Sosa's fluid design
+// JavaScript-based scroll animation inspired by Bettina Sosa's approach
 const setupScrollAnimation = (containerRef: MutableRefObject<any>) => {
   const lettersContainer = containerRef.current;
   if (!lettersContainer) {
@@ -23,12 +23,13 @@ const setupScrollAnimation = (containerRef: MutableRefObject<any>) => {
     return;
   }
 
-  console.log(`LetterCollision: Found ${letterElements.length} letters, setting up CSS animations`);
+  console.log(`LetterCollision: Found ${letterElements.length} letters, setting up scroll animations`);
 
   // Add CSS classes for smooth animations
   lettersContainer.classList.add('scroll-text-container');
   
-  letterElements.forEach((letter: Element, index: number) => {
+  // Store original positions and setup scroll animation
+  const letterData = Array.from(letterElements).map((letter: Element, index: number) => {
     const htmlElement = letter as HTMLElement;
     
     // Reset to clean state
@@ -39,9 +40,52 @@ const setupScrollAnimation = (containerRef: MutableRefObject<any>) => {
     // Add CSS class for animation
     htmlElement.classList.add('scroll-letter');
     
-    // Add data attributes for staggered animation
-    htmlElement.setAttribute('data-delay', (index * 0.02).toString());
+    // Store original position and random values for animation
+    const rect = htmlElement.getBoundingClientRect();
+    return {
+      element: htmlElement,
+      originalX: rect.left,
+      originalY: rect.top,
+      randomOffsetX: (Math.random() - 0.5) * 100,
+      randomOffsetY: (Math.random() - 0.5) * 100,
+      randomRotation: (Math.random() - 0.5) * 60,
+      speed: 0.5 + Math.random() * 0.5
+    };
   });
+
+  // Scroll event handler
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const containerRect = lettersContainer.getBoundingClientRect();
+    const containerTop = containerRect.top + scrollY;
+    const containerHeight = containerRect.height;
+    
+    // Calculate scroll progress (0 to 1)
+    const scrollProgress = Math.max(0, Math.min(1, (scrollY - containerTop + windowHeight) / (containerHeight + windowHeight)));
+    
+    letterData.forEach((letter, index) => {
+      const { element, randomOffsetX, randomOffsetY, randomRotation, speed } = letter;
+      
+      // Apply animation based on scroll progress
+      const animatedX = randomOffsetX * scrollProgress * speed;
+      const animatedY = randomOffsetY * scrollProgress * speed;
+      const animatedRotation = randomRotation * scrollProgress * speed;
+      
+      element.style.transform = `translate3d(${animatedX}px, ${animatedY}px, 0) rotate(${animatedRotation}deg)`;
+    });
+  };
+
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Initial call
+  handleScroll();
+
+  // Cleanup function
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
 };
 
 function LetterDisplay({ word }: { word: string }) {
@@ -65,14 +109,19 @@ export function LetterCollision() {
   useEffect(() => {
     if (!containerRef.current) return;
     
+    let cleanup: (() => void) | undefined;
+    
     // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
-      setupScrollAnimation(containerRef);
+      cleanup = setupScrollAnimation(containerRef);
     }, 100);
 
     // Cleanup function
     return () => {
       clearTimeout(timer);
+      if (cleanup) {
+        cleanup();
+      }
     };
   }, []);
 
