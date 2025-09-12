@@ -14,10 +14,10 @@ const it = 'it';
 
 function getRandomSpeed() {
   const randomDecimal = Math.random();
-  return 0.8 + randomDecimal * (1.5 - 0.8); // Increased speed range
+  return 0.9 + randomDecimal * (1.3 - 0.9); // Faster, more responsive speed range
 }
 function getRandomRotation() {
-  return Math.random() * 60 - 30; // Random rotation between -30 and 30 degrees
+  return Math.random() * 40 - 20; // Reduced rotation range for faster, less chaotic animation
 }
 
 const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
@@ -41,29 +41,30 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   letterElements.forEach((letter: Element, index: number) => {
     const htmlElement = letter as HTMLElement;
     
-    // Set initial state - ensure all letters start perfectly aligned
+    // Set initial state - ensure all letters start perfectly aligned horizontally
     gsap.set(htmlElement, { 
       y: 0, 
       x: 0,
       rotation: 0, 
       opacity: 1, 
       visibility: 'visible',
-      transform: 'none' // Clear any existing transforms
+      transform: 'translate3d(0, 0, 0)', // Force hardware acceleration and reset position
+      scale: 1 // Ensure no scaling at start
     });
 
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
     const rotation = getRandomRotation();
 
-    // Create the main animation with fixed range
+    // Create the main animation with fixed range - faster animation
     gsap.to(htmlElement, {
-      y: (1 - speed) * 300, // Fixed 300px range instead of maxScroll
+      y: (1 - speed) * 200, // Reduced range for faster effect
       rotation: rotation,
-      ease: 'none',
+      ease: 'power2.out', // Changed to faster easing
       scrollTrigger: {
         trigger: lettersContainer,
-        start: 'top center', // Start when top of text reaches center of screen
+        start: 'top bottom', // Start when top of text reaches bottom of viewport
         end: 'bottom top',
-        scrub: 1,
+        scrub: 0.3, // Even faster response
         invalidateOnRefresh: true
       }
     });
