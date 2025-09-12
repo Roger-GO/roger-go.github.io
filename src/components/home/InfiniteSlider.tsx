@@ -38,7 +38,7 @@ const InfiniteSlider = () => {
           <motion.div
             className={styles.scroller__inner}
             animate={{
-              x: '-50%', // This moves the container by half of its total width
+              x: [0, '-50%'], // Move from 0 to -50% for seamless loop
             }}
             transition={{
               duration: 40, // Adjust for speed. Higher number = slower scroll
@@ -54,9 +54,9 @@ const InfiniteSlider = () => {
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={250}
+                    width={0}
                     height={200}
-                    className="object-contain"
+                    className="h-[200px] w-auto object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
@@ -69,9 +69,9 @@ const InfiniteSlider = () => {
                   <Image
                     src={image.src}
                     alt=""
-                    width={250}
+                    width={0}
                     height={200}
-                    className="object-contain"
+                    className="h-[200px] w-auto object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
@@ -87,7 +87,7 @@ const InfiniteSlider = () => {
           <motion.div
             className={styles.scroller__inner}
             animate={{
-              x: '50%', // This moves the container by half of its total width in reverse
+              x: [0, '50%'], // Move from 0 to 50% for seamless reverse loop
             }}
             transition={{
               duration: 40, // Adjust for speed. Higher number = slower scroll
@@ -103,9 +103,9 @@ const InfiniteSlider = () => {
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={250}
+                    width={0}
                     height={200}
-                    className="object-contain"
+                    className="h-[200px] w-auto object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>
@@ -118,9 +118,9 @@ const InfiniteSlider = () => {
                   <Image
                     src={image.src}
                     alt=""
-                    width={250}
+                    width={0}
                     height={200}
-                    className="object-contain"
+                    className="h-[200px] w-auto object-contain"
                     sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
                   />
                 </Link>

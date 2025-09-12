@@ -13,10 +13,33 @@
 
 .scroller__item {
   flex-shrink: 0;
+  margin: 0 1rem;
 }
 
 .scroller__item img {
-  width: 250px; /* Or your desired image width */
-  height: auto;
-  border-radius: 8px;
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.scroller__item:hover img {
+  transform: scale(1.05);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .scroller__item img {
+    height: 150px;
+  }
+  
+  .scroller__inner {
+    gap: 0.5rem;
+  }
+  
+  .scroller__item {
+    margin: 0 0.5rem;
+  }
 }
