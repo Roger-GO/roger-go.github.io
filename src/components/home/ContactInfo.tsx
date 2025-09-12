@@ -60,7 +60,7 @@ export default function ContactInfo() {
               backgroundColor="secondary"
               className=" absolute h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-full bg-primary p-0 text-white sm:h-[200px] sm:w-[200px]"
             >
-              <a href="mailto:graciaor@my.erau.edu">Get in touch</a>
+              <a href="mailto:graciaor@my.erau.edu" target="_blank" rel="noopener noreferrer">Get in touch</a>
             </RoundedButton>
           </motion.div>
         </div>
@@ -98,6 +98,8 @@ export default function ContactInfo() {
                 <Link
                   href="https://github.com/roger-go"
                   className={animatedUnderlineStyle}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   GitHub
                 </Link>
@@ -107,6 +109,8 @@ export default function ContactInfo() {
               <Link
                 href="https://www.linkedin.com/in/rogeliogo/"
                 className={animatedUnderlineStyle}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 LinkedIn
               </Link>
@@ -115,6 +119,8 @@ export default function ContactInfo() {
               <Link
                 href="mailto:graciaor@my.erau.edu"
                 className={animatedUnderlineStyle}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Email
               </Link>
