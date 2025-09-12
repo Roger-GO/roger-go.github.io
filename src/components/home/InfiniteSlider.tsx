@@ -2,10 +2,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import './InfiniteSlider.css';
 
 const InfiniteSlider = () => {
-  // Define the images (excluding Me.jpeg and problematic screenshots) - let them determine their own aspect ratios
-  const allImages = [
+  // Define the images
+  const images = [
     { src: '/images/drones.png', alt: 'Drone Swarm Research' },
     { src: '/images/screenshot-1.png', alt: 'Research Visualization 1' },
     { src: '/images/screenshot-2.png', alt: 'Research Visualization 2' },
@@ -24,75 +25,79 @@ const InfiniteSlider = () => {
     { src: '/images/Transport.png', alt: 'Transportation Research' },
   ];
 
-  // Split images into two different sets for each row
-  const row1Images = allImages.slice(0, Math.ceil(allImages.length / 2));
-  const row2Images = allImages.slice(Math.ceil(allImages.length / 2));
-
-  // Duplicate the images multiple times for truly seamless infinite scroll
-  const duplicatedRow1Images = [...row1Images, ...row1Images, ...row1Images];
-  const duplicatedRow2Images = [...row2Images, ...row2Images, ...row2Images];
-
   return (
-    <div className="relative z-10 mt-[200px] bg-background overflow-hidden">
+    <div className="relative z-10 mt-[200px] bg-background">
       {/* First Row - Left to Right */}
       <div className="mb-8">
-        <div className="flex animate-scroll-left hover:pause-animation">
-          {duplicatedRow1Images.map((image, index) => (
-            <Link
-              key={`row1-${index}`}
-              href="/portfolio"
-              className="flex-shrink-0 mx-4 group cursor-pointer"
-            >
-              <div 
-                className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                style={{ 
-                  height: '200px',
-                  width: 'auto'
-                }}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={0}
-                  height={200}
-                  className="h-[200px] w-auto object-contain"
-                  sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
-              </div>
-            </Link>
-          ))}
+        <div className="scroller">
+          <ul className="scroller__list">
+            {images.map((image, index) => (
+              <li key={index} className="scroller__item">
+                <Link href="/portfolio" className="group cursor-pointer">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={0}
+                    height={200}
+                    className="h-[200px] w-auto object-contain"
+                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
+                  />
+                </Link>
+              </li>
+            ))}
+            {/* Duplicate for seamless loop */}
+            {images.map((image, index) => (
+              <li key={`duplicate-${index}`} className="scroller__item" aria-hidden="true">
+                <Link href="/portfolio" className="group cursor-pointer">
+                  <Image
+                    src={image.src}
+                    alt=""
+                    width={0}
+                    height={200}
+                    className="h-[200px] w-auto object-contain"
+                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Second Row - Right to Left */}
+      {/* Second Row - Right to Left (reversed) */}
       <div className="mb-8">
-        <div className="flex animate-scroll-right hover:pause-animation">
-          {duplicatedRow2Images.map((image, index) => (
-            <Link
-              key={`row2-${index}`}
-              href="/portfolio"
-              className="flex-shrink-0 mx-4 group cursor-pointer"
-            >
-              <div 
-                className="relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                style={{ 
-                  height: '200px',
-                  width: 'auto'
-                }}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={0}
-                  height={200}
-                  className="h-[200px] w-auto object-contain"
-                  sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
-              </div>
-            </Link>
-          ))}
+        <div className="scroller">
+          <ul className="scroller__list" style={{ animationDirection: 'reverse' }}>
+            {images.map((image, index) => (
+              <li key={`reverse-${index}`} className="scroller__item">
+                <Link href="/portfolio" className="group cursor-pointer">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={0}
+                    height={200}
+                    className="h-[200px] w-auto object-contain"
+                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
+                  />
+                </Link>
+              </li>
+            ))}
+            {/* Duplicate for seamless loop */}
+            {images.map((image, index) => (
+              <li key={`reverse-duplicate-${index}`} className="scroller__item" aria-hidden="true">
+                <Link href="/portfolio" className="group cursor-pointer">
+                  <Image
+                    src={image.src}
+                    alt=""
+                    width={0}
+                    height={200}
+                    className="h-[200px] w-auto object-contain"
+                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

@@ -12,12 +12,14 @@ import Research from '@/components/home/Research';
 import Education from '@/components/home/Education';
 import Skills from '@/components/home/Skills';
 import ContactInfo from '@/components/home/ContactInfo';
+import { useScreenSize } from '@/hooks/useScreenSize';
 
 
 export default function Home() {
   const [showScrollButton, setShowScrollButton] = useState(true);
   const scrollContainerRef = useRef(null);
   const heroRef = useRef(null);
+  const { isMobile } = useScreenSize();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,19 +46,22 @@ export default function Home() {
 
   return (
     <div ref={scrollContainerRef} className="overflow-x-hidden">
-      <LetterCollision />
-      {showScrollButton && (
+      {/* Only show LetterCollision on desktop to prevent mobile scroll issues */}
+      {!isMobile && <LetterCollision />}
+      
+      {/* Only show scroll button on desktop */}
+      {!isMobile && showScrollButton && (
         <Magnetic>
           <div
             className="fixed bottom-4 right-8 flex cursor-pointer items-center space-x-2 text-3xl font-semibold sm:bottom-8"
             onClick={scrollToHero}
           >
             <p>Scroll</p>
-
             <ArrowDownRight strokeWidth={3} className="size-6" />
           </div>
         </Magnetic>
       )}
+      
       <div id="hero" ref={heroRef}>
         <Hero />
       </div>
@@ -67,7 +72,9 @@ export default function Home() {
       <Skills />
       <InfiniteSlider />
       <ContactInfo />
-      <ContrastCursor isActive={false} text={'Go to project'} />
+      
+      {/* Only show ContrastCursor on desktop */}
+      {!isMobile && <ContrastCursor isActive={false} text={'Go to project'} />}
     </div>
   );
 }
