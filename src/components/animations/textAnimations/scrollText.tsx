@@ -24,17 +24,27 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
 
   letterElements.forEach((letter: Element, index: number) => {
     gsap.to(letter, {
-      y: (i, el) =>
-        (1 - parseFloat(el.getAttribute('data-speed'))) *
-        ScrollTrigger.maxScroll(window),
+      y: (i, el) => {
+        const speed = parseFloat(el.getAttribute('data-speed'));
+        // Limit movement to a reasonable range (300px max)
+        return (1 - speed) * 300;
+      },
       ease: 'power2.out',
       duration: 0.8,
       scrollTrigger: {
-        trigger: document.documentElement,
-        start: 0,
-        end: window.innerHeight,
+        trigger: lettersContainer,
+        start: 'top bottom',
+        end: 'bottom top',
         invalidateOnRefresh: true,
-        scrub: 0.5
+        scrub: 0.5,
+        onLeave: () => {
+          // Hide letters when scrolled past
+          gsap.set(letter, { opacity: 0 });
+        },
+        onEnterBack: () => {
+          // Show letters when scrolling back
+          gsap.set(letter, { opacity: 1 });
+        }
       },
       rotation: getRandomRotation()
     });
