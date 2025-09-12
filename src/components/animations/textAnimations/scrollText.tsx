@@ -41,12 +41,14 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   letterElements.forEach((letter: Element, index: number) => {
     const htmlElement = letter as HTMLElement;
     
-    // Set initial state
+    // Set initial state - ensure all letters start perfectly aligned
     gsap.set(htmlElement, { 
       y: 0, 
+      x: 0,
       rotation: 0, 
       opacity: 1, 
-      visibility: 'visible' 
+      visibility: 'visible',
+      transform: 'none' // Clear any existing transforms
     });
 
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
@@ -84,13 +86,14 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
 
 function LetterDisplay({ word }: { word: string }) {
   return word.split('').map((letter, index) => (
-    <div
+    <span
       key={index}
-      className="letter text-6xl font-semibold xs:text-[90px] xs:leading-none md:text-[120px] lg:text-[150px] xl:text-[210px] "
+      className="letter inline-block text-6xl font-semibold xs:text-[90px] xs:leading-none md:text-[120px] lg:text-[150px] xl:text-[210px]"
       data-speed={getRandomSpeed()}
+      style={{ transform: 'none' }}
     >
       {letter}
-    </div>
+    </span>
   ));
 }
 
@@ -115,15 +118,15 @@ export function LetterCollision() {
   return (
     <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden h-screen">
       <div className="-mt-28 mb-36 flex h-full flex-col justify-end lg:mb-24">
-        <div className="flex flex-wrap p-0">
+        <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={theBest} />
           <LetterDisplay word={wayTo} />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={predict} />
           <LetterDisplay word={theFuture} />
         </div>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={isTo} />
           <LetterDisplay word={invent} />
           <LetterDisplay word={it} />
