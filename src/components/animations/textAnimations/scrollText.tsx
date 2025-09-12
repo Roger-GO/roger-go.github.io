@@ -61,7 +61,7 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
       ease: 'none',
       scrollTrigger: {
         trigger: lettersContainer,
-        start: 'bottom center', // Only start when bottom of text reaches center of screen
+        start: 'top center', // Start when top of text reaches center of screen
         end: 'bottom top',
         scrub: 1,
         invalidateOnRefresh: true
@@ -92,7 +92,7 @@ function LetterDisplay({ word }: { word: string }) {
       data-speed={getRandomSpeed()}
       style={{ transform: 'none' }}
     >
-      {letter}
+      {letter === ' ' ? '\u00A0' : letter}
     </span>
   ));
 }
