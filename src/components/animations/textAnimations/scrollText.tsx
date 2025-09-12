@@ -1,8 +1,5 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MutableRefObject, useEffect, useRef } from 'react';
-
-gsap.registerPlugin(ScrollTrigger);
+import './scrollText.css';
 
 const theBest = 'The best ';
 const wayTo = 'way to ';
@@ -12,15 +9,8 @@ const isTo = 'is to ';
 const invent = 'invent ';
 const it = 'it';
 
-function getRandomSpeed() {
-  const randomDecimal = Math.random();
-  return 0.9 + randomDecimal * (1.3 - 0.9); // Faster, more responsive speed range
-}
-function getRandomRotation() {
-  return Math.random() * 40 - 20; // Reduced rotation range for faster, less chaotic animation
-}
-
-const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
+// CSS3-based animation approach inspired by Bettina Sosa's fluid design
+const setupScrollAnimation = (containerRef: MutableRefObject<any>) => {
   const lettersContainer = containerRef.current;
   if (!lettersContainer) {
     console.log('LetterCollision: Container not found');
@@ -33,86 +23,25 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     return;
   }
 
-  console.log(`LetterCollision: Found ${letterElements.length} letters, starting animation`);
+  console.log(`LetterCollision: Found ${letterElements.length} letters, setting up CSS animations`);
 
-  // Clear any existing ScrollTriggers
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
+  // Add CSS classes for smooth animations
+  lettersContainer.classList.add('scroll-text-container');
+  
   letterElements.forEach((letter: Element, index: number) => {
     const htmlElement = letter as HTMLElement;
     
-    // Force reset all properties to ensure perfect alignment
+    // Reset to clean state
     htmlElement.style.transform = 'none';
     htmlElement.style.position = 'static';
     htmlElement.style.display = 'inline-block';
-    htmlElement.style.top = 'auto';
-    htmlElement.style.left = 'auto';
-    htmlElement.style.right = 'auto';
-    htmlElement.style.bottom = 'auto';
     
-    // Set initial state - ensure all letters start perfectly aligned horizontally
-    gsap.set(htmlElement, { 
-      y: 0, 
-      x: 0,
-      rotation: 0, 
-      opacity: 1, 
-      visibility: 'visible',
-      scale: 1,
-      clearProps: "all" // Clear all GSAP properties
-    });
+    // Add CSS class for animation
+    htmlElement.classList.add('scroll-letter');
     
-    // Force a second reset to ensure clean state
-    gsap.set(htmlElement, {
-      y: 0,
-      x: 0,
-      rotation: 0,
-      transform: 'none'
-    });
-
-    const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
-    const rotation = getRandomRotation();
-
-    // Create ScrollTrigger that only activates when user scrolls down
-    ScrollTrigger.create({
-      trigger: lettersContainer,
-      start: 'top bottom-=200px', // Start when text is 200px from entering viewport
-      end: 'bottom top',
-      scrub: 0.1, // Very fast response
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        // Only animate when actively scrolling and progress > 0
-        if (self.isActive && self.progress > 0) {
-          gsap.to(htmlElement, {
-            y: (1 - speed) * 200 * self.progress,
-            rotation: rotation * self.progress,
-            duration: 0.1,
-            ease: 'power2.out'
-          });
-        } else if (self.progress === 0) {
-          // Reset to original position when at start
-          gsap.set(htmlElement, {
-            y: 0,
-            rotation: 0,
-            transform: 'none'
-          });
-        }
-      }
-    });
-
-    // Separate ScrollTrigger for visibility - keep text visible until scrolled far past
-    ScrollTrigger.create({
-      trigger: lettersContainer,
-      start: 'top bottom-=200px',
-      end: 'bottom top-=200px', // Hide 200px before leaving viewport
-      onEnter: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
-      onLeave: () => gsap.set(htmlElement, { opacity: 0, visibility: 'hidden' }),
-      onEnterBack: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
-      onLeaveBack: () => gsap.set(htmlElement, { opacity: 0, visibility: 'hidden' })
-    });
+    // Add data attributes for staggered animation
+    htmlElement.setAttribute('data-delay', (index * 0.02).toString());
   });
-
-  // Refresh ScrollTrigger after setup
-  ScrollTrigger.refresh();
 };
 
 function LetterDisplay({ word }: { word: string }) {
@@ -120,7 +49,6 @@ function LetterDisplay({ word }: { word: string }) {
     <span
       key={index}
       className="letter inline-block text-4xl font-semibold xs:text-5xl xs:leading-none sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
-      data-speed={getRandomSpeed()}
       style={{ 
         transform: 'none',
         minWidth: letter === ' ' ? '0.5em' : 'auto'
@@ -139,13 +67,12 @@ export function LetterCollision() {
     
     // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
-      animateLettersOnScroll(containerRef);
+      setupScrollAnimation(containerRef);
     }, 100);
 
     // Cleanup function
     return () => {
       clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 

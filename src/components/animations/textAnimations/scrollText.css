@@ -1,0 +1,132 @@
+/* CSS3-based text animation inspired by Bettina Sosa's fluid design approach */
+
+.scroll-text-container {
+  /* Container styles for smooth animations */
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-letter {
+  /* Base letter styles - perfectly aligned */
+  display: inline-block;
+  transform: translate3d(0, 0, 0); /* Hardware acceleration */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth, fluid transition */
+  will-change: transform; /* Optimize for animations */
+}
+
+/* Scroll-triggered animation using CSS */
+.scroll-text-container:hover .scroll-letter {
+  /* Gentle floating effect on hover - inspired by Bettina's fluid design */
+  animation: gentleFloat 2s ease-in-out infinite;
+}
+
+/* Keyframe animation for fluid movement */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(2px, -3px, 0) rotate(1deg);
+  }
+  50% {
+    transform: translate3d(-1px, -5px, 0) rotate(-0.5deg);
+  }
+  75% {
+    transform: translate3d(1px, -2px, 0) rotate(0.5deg);
+  }
+}
+
+/* Staggered animation delays for natural flow */
+.scroll-letter:nth-child(1) { animation-delay: 0s; }
+.scroll-letter:nth-child(2) { animation-delay: 0.1s; }
+.scroll-letter:nth-child(3) { animation-delay: 0.2s; }
+.scroll-letter:nth-child(4) { animation-delay: 0.3s; }
+.scroll-letter:nth-child(5) { animation-delay: 0.4s; }
+.scroll-letter:nth-child(6) { animation-delay: 0.5s; }
+.scroll-letter:nth-child(7) { animation-delay: 0.6s; }
+.scroll-letter:nth-child(8) { animation-delay: 0.7s; }
+.scroll-letter:nth-child(9) { animation-delay: 0.8s; }
+.scroll-letter:nth-child(10) { animation-delay: 0.9s; }
+.scroll-letter:nth-child(11) { animation-delay: 1s; }
+.scroll-letter:nth-child(12) { animation-delay: 1.1s; }
+.scroll-letter:nth-child(13) { animation-delay: 1.2s; }
+.scroll-letter:nth-child(14) { animation-delay: 1.3s; }
+.scroll-letter:nth-child(15) { animation-delay: 1.4s; }
+.scroll-letter:nth-child(16) { animation-delay: 1.5s; }
+.scroll-letter:nth-child(17) { animation-delay: 1.6s; }
+.scroll-letter:nth-child(18) { animation-delay: 1.7s; }
+.scroll-letter:nth-child(19) { animation-delay: 1.8s; }
+.scroll-letter:nth-child(20) { animation-delay: 1.9s; }
+
+/* Additional staggered delays for longer text */
+.scroll-letter:nth-child(n+21) { 
+  animation-delay: calc(var(--delay, 0) * 0.1s); 
+}
+
+/* Scroll-based animation using CSS scroll-driven animations (modern browsers) */
+@supports (animation-timeline: scroll()) {
+  .scroll-text-container {
+    animation-timeline: scroll();
+    animation-range: 0% 100%;
+  }
+  
+  .scroll-letter {
+    animation: scrollFloat linear;
+    animation-timeline: scroll();
+    animation-range: 0% 100%;
+  }
+  
+  @keyframes scrollFloat {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate3d(3px, -8px, 0) rotate(2deg);
+    }
+    50% {
+      transform: translate3d(-2px, -12px, 0) rotate(-1deg);
+    }
+    75% {
+      transform: translate3d(4px, -6px, 0) rotate(1.5deg);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+  }
+}
+
+/* Fallback for older browsers - simple hover effect */
+@supports not (animation-timeline: scroll()) {
+  .scroll-text-container:hover .scroll-letter {
+    transform: translate3d(2px, -4px, 0) rotate(1deg);
+    transition: transform 0.3s ease-out;
+  }
+}
+
+/* Mobile optimization - reduce animation intensity */
+@media (max-width: 768px) {
+  .scroll-letter {
+    transition: all 0.2s ease-out;
+  }
+  
+  @keyframes gentleFloat {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(1px, -2px, 0) rotate(0.5deg);
+    }
+  }
+}
+
+/* Accessibility - respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-letter {
+    animation: none;
+    transition: none;
+  }
+  
+  .scroll-text-container:hover .scroll-letter {
+    transform: none;
+  }
+}
