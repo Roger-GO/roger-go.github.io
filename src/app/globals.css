@@ -94,11 +94,15 @@
   }
 
   .animate-scroll-left {
-    animation: scroll-left 20s linear infinite;
+    animation: scroll-left 30s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 
   .animate-scroll-right {
-    animation: scroll-right 20s linear infinite;
+    animation: scroll-right 30s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 
   .hover\:pause-animation:hover {

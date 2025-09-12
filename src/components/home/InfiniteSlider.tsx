@@ -31,9 +31,9 @@ const InfiniteSlider = () => {
   const row1Images = allImages.slice(0, Math.ceil(allImages.length / 2));
   const row2Images = allImages.slice(Math.ceil(allImages.length / 2));
 
-  // Duplicate the images for seamless infinite scroll
-  const duplicatedRow1Images = [...row1Images, ...row1Images];
-  const duplicatedRow2Images = [...row2Images, ...row2Images];
+  // Duplicate the images multiple times for truly seamless infinite scroll
+  const duplicatedRow1Images = [...row1Images, ...row1Images, ...row1Images];
+  const duplicatedRow2Images = [...row2Images, ...row2Images, ...row2Images];
 
   return (
     <div className="relative z-10 mt-[200px] bg-background overflow-hidden">
