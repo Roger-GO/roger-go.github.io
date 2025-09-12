@@ -45,6 +45,10 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     htmlElement.style.transform = 'none';
     htmlElement.style.position = 'static';
     htmlElement.style.display = 'inline-block';
+    htmlElement.style.top = 'auto';
+    htmlElement.style.left = 'auto';
+    htmlElement.style.right = 'auto';
+    htmlElement.style.bottom = 'auto';
     
     // Set initial state - ensure all letters start perfectly aligned horizontally
     gsap.set(htmlElement, { 
@@ -56,6 +60,14 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
       scale: 1,
       clearProps: "all" // Clear all GSAP properties
     });
+    
+    // Force a second reset to ensure clean state
+    gsap.set(htmlElement, {
+      y: 0,
+      x: 0,
+      rotation: 0,
+      transform: 'none'
+    });
 
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
     const rotation = getRandomRotation();
@@ -63,7 +75,7 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     // Create ScrollTrigger that only activates when user scrolls down
     ScrollTrigger.create({
       trigger: lettersContainer,
-      start: 'top bottom', // Start when text enters viewport
+      start: 'top bottom-=200px', // Start when text is 200px from entering viewport
       end: 'bottom top',
       scrub: 0.1, // Very fast response
       invalidateOnRefresh: true,
@@ -90,7 +102,7 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     // Separate ScrollTrigger for visibility - keep text visible until scrolled far past
     ScrollTrigger.create({
       trigger: lettersContainer,
-      start: 'top bottom',
+      start: 'top bottom-=200px',
       end: 'bottom top-=200px', // Hide 200px before leaving viewport
       onEnter: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
       onLeave: () => gsap.set(htmlElement, { opacity: 0, visibility: 'hidden' }),
