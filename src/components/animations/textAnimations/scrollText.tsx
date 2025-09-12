@@ -56,17 +56,29 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
     const rotation = getRandomRotation();
 
-    // Create the main animation with fixed range - faster animation
-    gsap.to(htmlElement, {
-      y: (1 - speed) * 200, // Reduced range for faster effect
-      rotation: rotation,
-      ease: 'power2.out', // Changed to faster easing
-      scrollTrigger: {
-        trigger: lettersContainer,
-        start: 'top bottom', // Start when text enters viewport
-        end: 'bottom top',
-        scrub: 0.1, // Very fast response
-        invalidateOnRefresh: true
+    // Create ScrollTrigger that only activates when user scrolls down
+    ScrollTrigger.create({
+      trigger: lettersContainer,
+      start: 'top bottom-=50px', // Start when text is 50px from entering viewport
+      end: 'bottom top',
+      scrub: 0.1, // Very fast response
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        // Only animate when actively scrolling and progress > 0
+        if (self.isActive && self.progress > 0) {
+          gsap.to(htmlElement, {
+            y: (1 - speed) * 200 * self.progress,
+            rotation: rotation * self.progress,
+            duration: 0.1,
+            ease: 'power2.out'
+          });
+        } else if (self.progress === 0) {
+          // Reset to original position when at start
+          gsap.set(htmlElement, {
+            y: 0,
+            rotation: 0
+          });
+        }
       }
     });
 
