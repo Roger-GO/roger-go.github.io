@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const InfiniteSlider = () => {
-  // Define the images (excluding Me.jpeg) - let them determine their own aspect ratios
+  // Define the images (excluding Me.jpeg and problematic screenshots) - let them determine their own aspect ratios
   const allImages = [
     { src: '/images/drones.png', alt: 'Drone Swarm Research' },
     { src: '/images/screenshot-1.png', alt: 'Research Visualization 1' },
@@ -12,7 +12,6 @@ const InfiniteSlider = () => {
     { src: '/images/screenshot-3.png', alt: 'Research Visualization 3' },
     { src: '/images/screenshot-4.png', alt: 'Research Visualization 4' },
     { src: '/images/screenshot-5.png', alt: 'Research Visualization 5' },
-    { src: '/images/screenshot-6.png', alt: 'Research Visualization 6' },
     { src: '/images/screenshot-7.png', alt: 'Research Visualization 7' },
     { src: '/images/screenshot-8.png', alt: 'Research Visualization 8' },
     { src: '/images/screenshot-9.png', alt: 'Research Visualization 9' },
@@ -21,9 +20,7 @@ const InfiniteSlider = () => {
     { src: '/images/screenshot-12.png', alt: 'Research Visualization 12' },
     { src: '/images/screenshot-13.png', alt: 'Research Visualization 13' },
     { src: '/images/screenshot-14.png', alt: 'Research Visualization 14' },
-    { src: '/images/screenshot-15.png', alt: 'Research Visualization 15' },
     { src: '/images/screenshot-16.png', alt: 'Research Visualization 16' },
-    { src: '/images/screenshot-17.png', alt: 'Research Visualization 17' },
     { src: '/images/Transport.png', alt: 'Transportation Research' },
   ];
 
