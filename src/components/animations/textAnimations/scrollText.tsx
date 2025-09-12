@@ -41,6 +41,11 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   letterElements.forEach((letter: Element, index: number) => {
     const htmlElement = letter as HTMLElement;
     
+    // Force reset all properties to ensure perfect alignment
+    htmlElement.style.transform = 'none';
+    htmlElement.style.position = 'static';
+    htmlElement.style.display = 'inline-block';
+    
     // Set initial state - ensure all letters start perfectly aligned horizontally
     gsap.set(htmlElement, { 
       y: 0, 
@@ -48,9 +53,8 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
       rotation: 0, 
       opacity: 1, 
       visibility: 'visible',
-      transform: 'translate3d(0, 0, 0)', // Force hardware acceleration and reset position
-      scale: 1, // Ensure no scaling at start
-      clearProps: "all" // Clear any existing properties
+      scale: 1,
+      clearProps: "all" // Clear all GSAP properties
     });
 
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
@@ -59,7 +63,7 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
     // Create ScrollTrigger that only activates when user scrolls down
     ScrollTrigger.create({
       trigger: lettersContainer,
-      start: 'top bottom-=50px', // Start when text is 50px from entering viewport
+      start: 'top bottom', // Start when text enters viewport
       end: 'bottom top',
       scrub: 0.1, // Very fast response
       invalidateOnRefresh: true,
@@ -76,7 +80,8 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
           // Reset to original position when at start
           gsap.set(htmlElement, {
             y: 0,
-            rotation: 0
+            rotation: 0,
+            transform: 'none'
           });
         }
       }
