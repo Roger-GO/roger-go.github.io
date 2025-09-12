@@ -49,7 +49,8 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
       opacity: 1, 
       visibility: 'visible',
       transform: 'translate3d(0, 0, 0)', // Force hardware acceleration and reset position
-      scale: 1 // Ensure no scaling at start
+      scale: 1, // Ensure no scaling at start
+      clearProps: "all" // Clear any existing properties
     });
 
     const speed = parseFloat(htmlElement.getAttribute('data-speed') || '1');
@@ -62,9 +63,9 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
       ease: 'power2.out', // Changed to faster easing
       scrollTrigger: {
         trigger: lettersContainer,
-        start: 'top bottom', // Start when top of text reaches bottom of viewport
+        start: 'top bottom', // Start when text enters viewport
         end: 'bottom top',
-        scrub: 0.3, // Even faster response
+        scrub: 0.1, // Very fast response
         invalidateOnRefresh: true
       }
     });
