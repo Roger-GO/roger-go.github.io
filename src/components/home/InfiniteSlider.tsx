@@ -4,10 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const InfiniteSlider = () => {
-  // Define the images with their aspect ratios preserved
-  const images = [
+  // Define the images with their aspect ratios preserved (excluding Me.jpeg)
+  const allImages = [
     { src: '/images/drones.png', alt: 'Drone Swarm Research', aspectRatio: 16/9 },
-    { src: '/images/Me.jpeg', alt: 'Professional Headshot', aspectRatio: 3/4 },
     { src: '/images/screenshot-1.png', alt: 'Research Visualization 1', aspectRatio: 16/9 },
     { src: '/images/screenshot-2.png', alt: 'Research Visualization 2', aspectRatio: 16/9 },
     { src: '/images/screenshot-3.png', alt: 'Research Visualization 3', aspectRatio: 16/9 },
@@ -28,15 +27,20 @@ const InfiniteSlider = () => {
     { src: '/images/Transport.png', alt: 'Transportation Research', aspectRatio: 16/9 },
   ];
 
+  // Split images into two different sets for each row
+  const row1Images = allImages.slice(0, Math.ceil(allImages.length / 2));
+  const row2Images = allImages.slice(Math.ceil(allImages.length / 2));
+
   // Duplicate the images for seamless infinite scroll
-  const duplicatedImages = [...images, ...images];
+  const duplicatedRow1Images = [...row1Images, ...row1Images];
+  const duplicatedRow2Images = [...row2Images, ...row2Images];
 
   return (
     <div className="relative z-10 mt-[200px] bg-background overflow-hidden">
       {/* First Row - Left to Right */}
       <div className="mb-8">
         <div className="flex animate-scroll-left hover:pause-animation">
-          {duplicatedImages.map((image, index) => (
+          {duplicatedRow1Images.map((image, index) => (
             <Link
               key={`row1-${index}`}
               href="/portfolio"
@@ -68,7 +72,7 @@ const InfiniteSlider = () => {
       {/* Second Row - Right to Left */}
       <div className="mb-8">
         <div className="flex animate-scroll-right hover:pause-animation">
-          {duplicatedImages.map((image, index) => (
+          {duplicatedRow2Images.map((image, index) => (
             <Link
               key={`row2-${index}`}
               href="/portfolio"
