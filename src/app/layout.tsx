@@ -39,7 +39,7 @@ export default function RootLayout({
         </Script>
       </head>
       <SpeedInsights />
-      <body className="overflow-scroll overflow-x-hidden">
+      <body className="overflow-x-hidden">
         <Animations>
           <main>
             <Header />

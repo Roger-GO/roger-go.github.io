@@ -36,7 +36,17 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
         start: 0,
         end: window.innerHeight,
         invalidateOnRefresh: true,
-        scrub: 0.5
+        scrub: 0.5,
+        // Disable on mobile to prevent scroll interference
+        onRefresh: () => {
+          if (window.innerWidth < 768) {
+            ScrollTrigger.getAll().forEach(trigger => {
+              if (trigger.trigger === document.documentElement) {
+                trigger.disable();
+              }
+            });
+          }
+        }
       },
       rotation: getRandomRotation()
     });
@@ -63,7 +73,10 @@ export function LetterCollision() {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    animateLettersOnScroll(containerRef);
+    // Only animate on desktop to prevent mobile scroll issues
+    if (window.innerWidth >= 768) {
+      animateLettersOnScroll(containerRef);
+    }
   }, []);
 
   return (

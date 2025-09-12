@@ -35,7 +35,10 @@ export default function RootTemplate({ children }: PropsWithChildren) {
     setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
-      window.scrollTo(0, 0);
+      // Only reset scroll on initial page load, not on mobile scroll
+      if (window.scrollY === 0) {
+        window.scrollTo(0, 0);
+      }
     }, 800);
     console.log('loading', isLoading);
   }, []);

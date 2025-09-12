@@ -58,7 +58,7 @@ export default function PreLoader() {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="fixed z-30 flex h-screen w-screen items-center justify-center bg-black text-white"
+      className="fixed z-30 flex h-screen w-screen items-center justify-center bg-black text-white pointer-events-none"
     >
       {dimension.width > 0 && (
         <>
