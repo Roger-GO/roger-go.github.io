@@ -88,7 +88,7 @@ function LetterDisplay({ word }: { word: string }) {
   return word.split('').map((letter, index) => (
     <span
       key={index}
-      className="letter inline-block text-6xl font-semibold xs:text-[90px] xs:leading-none md:text-[120px] lg:text-[150px] xl:text-[210px]"
+      className="letter inline-block text-4xl font-semibold xs:text-5xl xs:leading-none sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
       data-speed={getRandomSpeed()}
       style={{ transform: 'none' }}
     >
