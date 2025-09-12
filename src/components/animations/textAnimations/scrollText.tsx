@@ -23,28 +23,38 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   const letterElements = lettersContainer?.querySelectorAll('.letter');
 
   letterElements.forEach((letter: Element, index: number) => {
+    // Create a more restrictive scroll trigger that hides letters completely when out of view
+    ScrollTrigger.create({
+      trigger: lettersContainer,
+      start: 'top bottom',
+      end: 'bottom top',
+      onEnter: () => {
+        gsap.set(letter, { opacity: 1, visibility: 'visible' });
+      },
+      onLeave: () => {
+        gsap.set(letter, { opacity: 0, visibility: 'hidden' });
+      },
+      onEnterBack: () => {
+        gsap.set(letter, { opacity: 1, visibility: 'visible' });
+      },
+      onLeaveBack: () => {
+        gsap.set(letter, { opacity: 0, visibility: 'hidden' });
+      }
+    });
+
+    // Subtle parallax movement only within the container bounds
     gsap.to(letter, {
       y: (i, el) => {
         const speed = parseFloat(el.getAttribute('data-speed'));
-        // Limit movement to a reasonable range (300px max)
-        return (1 - speed) * 300;
+        // Much smaller movement range (50px max)
+        return (1 - speed) * 50;
       },
-      ease: 'power2.out',
-      duration: 0.8,
+      ease: 'none',
       scrollTrigger: {
         trigger: lettersContainer,
         start: 'top bottom',
         end: 'bottom top',
-        invalidateOnRefresh: true,
-        scrub: 0.5,
-        onLeave: () => {
-          // Hide letters when scrolled past
-          gsap.set(letter, { opacity: 0 });
-        },
-        onEnterBack: () => {
-          // Show letters when scrolling back
-          gsap.set(letter, { opacity: 1 });
-        }
+        scrub: 1
       },
       rotation: getRandomRotation()
     });
@@ -72,8 +82,8 @@ export function LetterCollision() {
   }, []);
 
   return (
-    <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden">
-      <div className="-mt-28 mb-36 flex h-screen flex-col justify-end lg:mb-24">
+    <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden h-screen">
+      <div className="-mt-28 mb-36 flex h-full flex-col justify-end lg:mb-24">
         <div className="flex flex-wrap p-0">
           <LetterDisplay word={creativity} />
           <div className="w-2 xs:w-4 sm:w-10"></div>
