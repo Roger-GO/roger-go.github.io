@@ -59,18 +59,18 @@ const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
       ease: 'none',
       scrollTrigger: {
         trigger: lettersContainer,
-        start: 'top bottom',
+        start: 'bottom center', // Only start when bottom of text reaches center of screen
         end: 'bottom top',
         scrub: 1,
         invalidateOnRefresh: true
       }
     });
 
-    // Separate ScrollTrigger for visibility
+    // Separate ScrollTrigger for visibility - keep text visible until scrolled far past
     ScrollTrigger.create({
       trigger: lettersContainer,
       start: 'top bottom',
-      end: 'bottom top',
+      end: 'bottom top-=200px', // Hide 200px before leaving viewport
       onEnter: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
       onLeave: () => gsap.set(htmlElement, { opacity: 0, visibility: 'hidden' }),
       onEnterBack: () => gsap.set(htmlElement, { opacity: 1, visibility: 'visible' }),
