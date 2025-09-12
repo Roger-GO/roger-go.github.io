@@ -1,5 +1,8 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MutableRefObject, useEffect, useRef } from 'react';
-import './scrollText.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const theBest = 'The best ';
 const wayTo = 'way to ';
@@ -9,97 +12,46 @@ const isTo = 'is to ';
 const invent = 'invent ';
 const it = 'it';
 
-// JavaScript-based scroll animation inspired by Bettina Sosa's approach
-const setupScrollAnimation = (containerRef: MutableRefObject<any>) => {
+function getRandomSpeed() {
+  const randomDecimal = Math.random();
+  return 0.8 + randomDecimal * (1.5 - 0.8); // Increased speed range
+}
+function getRandomRotation() {
+  return Math.random() * 60 - 30; // Random rotation between -30 and 30 degrees
+}
+
+const animateLettersOnScroll = (containerRef: MutableRefObject<any>) => {
   const lettersContainer = containerRef.current;
-  if (!lettersContainer) {
-    console.log('LetterCollision: Container not found');
-    return;
-  }
+  const letterElements = lettersContainer?.querySelectorAll('.letter');
 
-  const letterElements = lettersContainer.querySelectorAll('.letter');
-  if (!letterElements.length) {
-    console.log('LetterCollision: No letter elements found');
-    return;
-  }
-
-  console.log(`LetterCollision: Found ${letterElements.length} letters, setting up scroll animations`);
-
-  // Add CSS classes for smooth animations
-  lettersContainer.classList.add('scroll-text-container');
-  
-  // Store original positions and setup scroll animation
-  const letterData = Array.from(letterElements).map((letter: Element, index: number) => {
-    const htmlElement = letter as HTMLElement;
-    
-    // Reset to clean state
-    htmlElement.style.transform = 'none';
-    htmlElement.style.position = 'static';
-    htmlElement.style.display = 'inline-block';
-    
-    // Add CSS class for animation
-    htmlElement.classList.add('scroll-letter');
-    
-    // Store original position and random values for animation
-    const rect = htmlElement.getBoundingClientRect();
-    return {
-      element: htmlElement,
-      originalX: rect.left,
-      originalY: rect.top,
-      randomOffsetX: (Math.random() - 0.5) * 100,
-      randomOffsetY: (Math.random() - 0.5) * 100,
-      randomRotation: (Math.random() - 0.5) * 60,
-      speed: 0.5 + Math.random() * 0.5
-    };
-  });
-
-  // Scroll event handler
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const containerRect = lettersContainer.getBoundingClientRect();
-    const containerTop = containerRect.top + scrollY;
-    const containerHeight = containerRect.height;
-    
-    // Calculate scroll progress (0 to 1)
-    const scrollProgress = Math.max(0, Math.min(1, (scrollY - containerTop + windowHeight) / (containerHeight + windowHeight)));
-    
-    letterData.forEach((letter, index) => {
-      const { element, randomOffsetX, randomOffsetY, randomRotation, speed } = letter;
-      
-      // Apply animation based on scroll progress
-      const animatedX = randomOffsetX * scrollProgress * speed;
-      const animatedY = randomOffsetY * scrollProgress * speed;
-      const animatedRotation = randomRotation * scrollProgress * speed;
-      
-      element.style.transform = `translate3d(${animatedX}px, ${animatedY}px, 0) rotate(${animatedRotation}deg)`;
+  letterElements.forEach((letter: Element, index: number) => {
+    gsap.to(letter, {
+      y: (i, el) =>
+        (1 - parseFloat(el.getAttribute('data-speed'))) *
+        ScrollTrigger.maxScroll(window),
+      ease: 'power2.out',
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: 0,
+        end: window.innerHeight,
+        invalidateOnRefresh: true,
+        scrub: 0.5
+      },
+      rotation: getRandomRotation()
     });
-  };
-
-  // Add scroll event listener
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  
-  // Initial call
-  handleScroll();
-
-  // Cleanup function
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
+  });
 };
 
 function LetterDisplay({ word }: { word: string }) {
   return word.split('').map((letter, index) => (
-    <span
+    <div
       key={index}
-      className="letter inline-block text-4xl font-semibold xs:text-5xl xs:leading-none sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
-      style={{ 
-        transform: 'none',
-        minWidth: letter === ' ' ? '0.5em' : 'auto'
-      }}
+      className="letter text-6xl font-semibold xs:text-[90px] xs:leading-none md:text-[120px] lg:text-[150px] xl:text-[210px]"
+      data-speed={getRandomSpeed()}
     >
-      {letter === ' ' ? '\u00A0' : letter}
-    </span>
+      {letter}
+    </div>
   ));
 }
 
@@ -108,37 +60,27 @@ export function LetterCollision() {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    
-    let cleanup: (() => void) | undefined;
-    
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      cleanup = setupScrollAnimation(containerRef);
-    }, 100);
-
-    // Cleanup function
-    return () => {
-      clearTimeout(timer);
-      if (cleanup) {
-        cleanup();
-      }
-    };
+    animateLettersOnScroll(containerRef);
   }, []);
 
   return (
-    <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden h-screen">
-      <div className="-mt-28 mb-36 flex h-full flex-col justify-end lg:mb-24">
-        <div className="flex flex-wrap items-baseline leading-none">
+    <div ref={containerRef} className="ml-8 scroll-smooth">
+      <div className="-mt-28 mb-36 flex h-screen flex-col justify-end lg:mb-24">
+        <div className="flex flex-wrap p-0">
           <LetterDisplay word={theBest} />
+          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={wayTo} />
         </div>
-        <div className="flex flex-wrap items-baseline leading-none">
+        <div className="flex flex-wrap">
           <LetterDisplay word={predict} />
+          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={theFuture} />
         </div>
-        <div className="flex flex-wrap items-baseline leading-none">
+        <div className="flex flex-wrap">
           <LetterDisplay word={isTo} />
+          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={invent} />
+          <div className="w-2 xs:w-4 sm:w-10"></div>
           <LetterDisplay word={it} />
         </div>
       </div>
