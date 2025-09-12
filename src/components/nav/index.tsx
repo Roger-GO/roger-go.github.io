@@ -10,24 +10,28 @@ const links = [
     href: '/'
   },
   {
-    title: 'about',
-    href: '/about'
+    title: 'publications',
+    href: '/publications'
   },
   {
-    title: 'projects',
-    href: '/projects'
+    title: 'awards & recognition',
+    href: '/awards'
   },
   {
-    title: 'gallery',
-    href: '/gallery'
+    title: 'teaching',
+    href: '/teaching'
   },
   {
-    title: 'blog',
-    href: '/blog'
+    title: 'work',
+    href: '/work'
   },
   {
-    title: 'contact',
-    href: '/contact'
+    title: 'portfolio',
+    href: '/portfolio'
+  },
+  {
+    title: 'cv',
+    href: '/cv'
   }
 ];
 
