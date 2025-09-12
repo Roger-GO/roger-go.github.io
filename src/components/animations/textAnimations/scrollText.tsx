@@ -90,7 +90,10 @@ function LetterDisplay({ word }: { word: string }) {
       key={index}
       className="letter inline-block text-4xl font-semibold xs:text-5xl xs:leading-none sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
       data-speed={getRandomSpeed()}
-      style={{ transform: 'none' }}
+      style={{ 
+        transform: 'none',
+        minWidth: letter === ' ' ? '0.5em' : 'auto'
+      }}
     >
       {letter === ' ' ? '\u00A0' : letter}
     </span>
