@@ -5,8 +5,8 @@ import Link from 'next/link';
 import './InfiniteSlider.css';
 
 const InfiniteSlider = () => {
-  // Define the images
-  const images = [
+  // Define all the images
+  const allImages = [
     { src: '/images/drones.png', alt: 'Drone Swarm Research' },
     { src: '/images/screenshot-1.png', alt: 'Research Visualization 1' },
     { src: '/images/screenshot-2.png', alt: 'Research Visualization 2' },
@@ -25,13 +25,17 @@ const InfiniteSlider = () => {
     { src: '/images/Transport.png', alt: 'Transportation Research' },
   ];
 
+  // Split images into two different sets for each row
+  const row1Images = allImages.slice(0, Math.ceil(allImages.length / 2));
+  const row2Images = allImages.slice(Math.ceil(allImages.length / 2));
+
   return (
     <div className="relative z-10 mt-[200px] bg-background">
       {/* First Row - Left to Right */}
       <div className="mb-8">
         <div className="scroller">
           <ul className="scroller__list">
-            {images.map((image, index) => (
+            {row1Images.map((image, index) => (
               <li key={index} className="scroller__item">
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
@@ -46,7 +50,7 @@ const InfiniteSlider = () => {
               </li>
             ))}
             {/* Duplicate for seamless loop */}
-            {images.map((image, index) => (
+            {row1Images.map((image, index) => (
               <li key={`duplicate-${index}`} className="scroller__item" aria-hidden="true">
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
@@ -68,7 +72,7 @@ const InfiniteSlider = () => {
       <div className="mb-8">
         <div className="scroller">
           <ul className="scroller__list" style={{ animationDirection: 'reverse' }}>
-            {images.map((image, index) => (
+            {row2Images.map((image, index) => (
               <li key={`reverse-${index}`} className="scroller__item">
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
@@ -83,7 +87,7 @@ const InfiniteSlider = () => {
               </li>
             ))}
             {/* Duplicate for seamless loop */}
-            {images.map((image, index) => (
+            {row2Images.map((image, index) => (
               <li key={`reverse-duplicate-${index}`} className="scroller__item" aria-hidden="true">
                 <Link href="/portfolio" className="group cursor-pointer">
                   <Image
