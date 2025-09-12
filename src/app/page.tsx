@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDownRight } from 'lucide-react';
-import SlidingImages from '@/components/home/SlidingImages';
+import InfiniteSlider from '@/components/home/InfiniteSlider';
 import ContrastCursor from '@/components/animations/cursor/contrastCursor';
 import { LetterCollision } from '@/components/animations/textAnimations/scrollText';
 import Magnetic from '@/components/animations/magnetic';
@@ -13,42 +13,6 @@ import Education from '@/components/home/Education';
 import Skills from '@/components/home/Skills';
 import ContactInfo from '@/components/home/ContactInfo';
 
-const slider1 = [
-  {
-    color: 'white',
-    src: 'stylesync/pca.png'
-  },
-  {
-    color: 'white',
-    src: 'stylesync/diagram.png'
-  },
-  {
-    color: '#21242b',
-    src: 'catapult-trading/dashboard.png'
-  },
-  {
-    color: '#21242b',
-    src: 'm31/controller.jpg'
-  }
-];
-const slider2 = [
-  {
-    color: '#d4e3ec',
-    src: 'm31/specs.png'
-  },
-  {
-    color: '#9289BD',
-    src: 'axo/prototype.png'
-  },
-  {
-    color: 'white',
-    src: 'm31/app.png'
-  },
-  {
-    color: 'white',
-    src: 'stylesync/hero.svg'
-  }
-];
 
 export default function Home() {
   const [showScrollButton, setShowScrollButton] = useState(true);
@@ -101,7 +65,7 @@ export default function Home() {
       <Research />
       <Education />
       <Skills />
-      <SlidingImages slider1={slider1} slider2={slider2} />
+      <InfiniteSlider />
       <ContactInfo />
       <ContrastCursor isActive={false} text={'Go to project'} />
     </div>
