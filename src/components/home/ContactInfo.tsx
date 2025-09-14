@@ -65,7 +65,11 @@ export default function ContactInfo() {
           </motion.div>
         </div>
         <div className="mt-6 flex gap-5 sm:mx-[100px]">
-          <RoundedButton>graciaor@my.erau.edu</RoundedButton>
+          <RoundedButton>
+            <a href="mailto:graciaor@my.erau.edu" target="_blank" rel="noopener noreferrer">
+              graciaor@my.erau.edu
+            </a>
+          </RoundedButton>
         </div>
 
         <div className="mt-20 flex flex-col justify-between p-5 2xs:mt-52 sm:mx-[100px] sm:mt-48 sm:flex-row">
