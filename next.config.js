@@ -2,8 +2,6 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/roger-go.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/roger-go.github.io' : '',
   images: {
     domains: [
       'i.scdn.co',
