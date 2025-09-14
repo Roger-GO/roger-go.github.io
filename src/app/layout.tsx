@@ -22,6 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload Google Analytics */}
+        <link
+          rel="preload"
+          href="https://www.googletagmanager.com/gtag/js?id=G-K0L6C0ZB98"
+          as="script"
+        />
+      </head>
+      <body className="overflow-x-hidden">
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-K0L6C0ZB98"
@@ -35,16 +43,12 @@ export default function RootLayout({
             gtag('config', 'G-K0L6C0ZB98');
           `}
         </Script>
-      </head>
-      <body className="overflow-x-hidden">
         <Animations>
-          <main>
-            <Header />
-            <div className="flex flex-col bg-background text-foreground">
-              <main className={`flex-grow ${inter.className}`}>{children}</main>
-            </div>
-            <Toaster />
-          </main>
+          <Header />
+          <div className="flex flex-col bg-background text-foreground">
+            <main className={`flex-grow ${inter.className}`}>{children}</main>
+          </div>
+          <Toaster />
         </Animations>
       </body>
     </html>

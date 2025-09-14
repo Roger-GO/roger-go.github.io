@@ -13,7 +13,7 @@ export default function Skills() {
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
   return (
-    <section ref={containerRef} className="bg-gray-50 py-16 sm:py-24">
+    <section ref={containerRef} className="bg-gray-50 py-8 sm:py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -21,12 +21,12 @@ export default function Skills() {
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Skills
           </h2>
         </motion.div>
         
-        <div className="mx-auto mt-16 max-w-4xl">
+        <div className="mx-auto mt-8 max-w-4xl">
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}

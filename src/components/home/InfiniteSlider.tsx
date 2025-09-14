@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './InfiniteSlider.module.css';
 
 const InfiniteSlider = () => {
   // Define all the images
@@ -23,111 +22,87 @@ const InfiniteSlider = () => {
     { src: '/images/screenshot-13.png', alt: 'Research Visualization 13' },
     { src: '/images/screenshot-14.png', alt: 'Research Visualization 14' },
     { src: '/images/screenshot-16.png', alt: 'Research Visualization 16' },
+    { src: '/images/screenshot-17.png', alt: 'Research Visualization 17' },
     { src: '/images/Transport.png', alt: 'Transportation Research' },
+    { src: '/images/bike.png', alt: 'Bike Design' },
+    { src: '/images/theme.png', alt: 'Theme Design' },
+    { src: '/images/logo.jpg', alt: 'Logo Design' },
+    { src: '/images/linkedin.png', alt: 'LinkedIn' },
+    { src: '/images/profile.jpg', alt: 'Profile' },
   ];
 
   // Split images into two different sets for each row
-  const row1Images = allImages.slice(0, Math.ceil(allImages.length / 2));
-  const row2Images = allImages.slice(Math.ceil(allImages.length / 2));
+  const topSliderImages = allImages.slice(0, Math.ceil(allImages.length / 2));
+  const bottomSliderImages = allImages.slice(Math.ceil(allImages.length / 2));
 
   return (
-    <div className="relative z-10 mt-[200px] bg-background">
-      {/* First Row - Left to Right */}
-      <div className="mb-8">
-        <div className={styles.scroller}>
-          <motion.div
-            className={styles.scroller__inner}
-            animate={{
-              x: [0, '-50%'], // Move from 0 to -50% for seamless loop
-            }}
-            transition={{
-              duration: 40, // Adjust for speed. Higher number = slower scroll
+    <div className="relative z-10 mt-[50px] bg-background py-8">
+      {/* Top Slider - Moving Left to Right */}
+      <div className="mb-8 overflow-hidden">
+        <motion.div
+          className="flex gap-6"
+          animate={{
+            x: [0, -100 * topSliderImages.length],
+          }}
+          transition={{
+            x: {
               repeat: Infinity,
-              repeatType: 'loop',
-              ease: 'linear',
-            }}
-          >
-            {/* Render the images once... */}
-            {row1Images.map((image, index) => (
-              <div key={index} className={styles.scroller__item}>
-                <Link href="/portfolio" className="group cursor-pointer">
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+        >
+          {[...topSliderImages, ...topSliderImages].map((image, index) => (
+            <div key={`top-${index}`} className="flex-shrink-0">
+              <Link href="/portfolio" className="group cursor-pointer block">
+                <div className="relative h-[200px] w-[250px] overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={0}
-                    height={200}
-                    className="h-[200px] w-auto object-contain"
-                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 250px"
                   />
-                </Link>
-              </div>
-            ))}
-            {/* ...and then render them again for the seamless loop */}
-            {row1Images.map((image, index) => (
-              <div key={`duplicate-${index}`} className={styles.scroller__item} aria-hidden="true">
-                <Link href="/portfolio" className="group cursor-pointer">
-                  <Image
-                    src={image.src}
-                    alt=""
-                    width={0}
-                    height={200}
-                    className="h-[200px] w-auto object-contain"
-                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
-                  />
-                </Link>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Second Row - Right to Left (reversed) */}
-      <div className="mb-8">
-        <div className={styles.scroller}>
-          <motion.div
-            className={styles.scroller__inner}
-            animate={{
-              x: [0, '50%'], // Move from 0 to 50% for seamless reverse loop
-            }}
-            transition={{
-              duration: 40, // Adjust for speed. Higher number = slower scroll
+      {/* Bottom Slider - Moving Right to Left */}
+      <div className="mb-8 overflow-hidden">
+        <motion.div
+          className="flex gap-6"
+          animate={{
+            x: [-100 * bottomSliderImages.length, 0],
+          }}
+          transition={{
+            x: {
               repeat: Infinity,
-              repeatType: 'loop',
-              ease: 'linear',
-            }}
-          >
-            {/* Render the images once... */}
-            {row2Images.map((image, index) => (
-              <div key={`reverse-${index}`} className={styles.scroller__item}>
-                <Link href="/portfolio" className="group cursor-pointer">
+              repeatType: "loop",
+              duration: 30,
+              ease: "linear",
+            },
+          }}
+        >
+          {[...bottomSliderImages, ...bottomSliderImages].map((image, index) => (
+            <div key={`bottom-${index}`} className="flex-shrink-0">
+              <Link href="/portfolio" className="group cursor-pointer block">
+                <div className="relative h-[200px] w-[250px] overflow-hidden rounded-xl shadow-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={0}
-                    height={200}
-                    className="h-[200px] w-auto object-contain"
-                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 250px"
                   />
-                </Link>
-              </div>
-            ))}
-            {/* ...and then render them again for the seamless loop */}
-            {row2Images.map((image, index) => (
-              <div key={`reverse-duplicate-${index}`} className={styles.scroller__item} aria-hidden="true">
-                <Link href="/portfolio" className="group cursor-pointer">
-                  <Image
-                    src={image.src}
-                    alt=""
-                    width={0}
-                    height={200}
-                    className="h-[200px] w-auto object-contain"
-                    sizes="(max-width: 768px) 150px, (max-width: 1200px) 200px, 400px"
-                  />
-                </Link>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

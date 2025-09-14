@@ -17,9 +17,14 @@ import { useScreenSize } from '@/hooks/useScreenSize';
 
 export default function Home() {
   const [showScrollButton, setShowScrollButton] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const scrollContainerRef = useRef(null);
   const heroRef = useRef(null);
   const { isMobile } = useScreenSize();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,10 +52,10 @@ export default function Home() {
   return (
     <div ref={scrollContainerRef} className="overflow-x-hidden">
       {/* Only show LetterCollision on desktop to prevent mobile scroll issues */}
-      {!isMobile && <LetterCollision />}
+      {mounted && !isMobile && <LetterCollision />}
       
       {/* Only show scroll button on desktop */}
-      {!isMobile && showScrollButton && (
+      {mounted && !isMobile && showScrollButton && (
         <Magnetic>
           <div
             className="fixed bottom-4 right-8 flex cursor-pointer items-center space-x-2 text-3xl font-semibold sm:bottom-8"
@@ -74,7 +79,7 @@ export default function Home() {
       <ContactInfo />
       
       {/* Only show ContrastCursor on desktop */}
-      {!isMobile && <ContrastCursor isActive={false} text={'Go to project'} />}
+      {mounted && !isMobile && <ContrastCursor isActive={false} text={'Go to project'} />}
     </div>
   );
 }

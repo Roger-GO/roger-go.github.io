@@ -21,28 +21,34 @@ export default function Header() {
   }, [pathname]);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(button.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 0,
-        end: window.innerHeight,
-        onLeave: () => {
-          gsap.to(button.current, {
-            scale: 1,
-            duration: 0.25,
-            ease: 'power1.out'
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(button.current, {
-            scale: 0,
-            duration: 0.25,
-            ease: 'power1.out'
-          });
+    if (typeof window === 'undefined') return;
+    
+    try {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to(button.current, {
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: 0,
+          end: window.innerHeight,
+          onLeave: () => {
+            gsap.to(button.current, {
+              scale: 1,
+              duration: 0.25,
+              ease: 'power1.out'
+            });
+          },
+          onEnterBack: () => {
+            gsap.to(button.current, {
+              scale: 0,
+              duration: 0.25,
+              ease: 'power1.out'
+            });
+          }
         }
-      }
-    });
+      });
+    } catch (error) {
+      console.warn('GSAP ScrollTrigger failed to initialize:', error);
+    }
   }, []);
 
   return (

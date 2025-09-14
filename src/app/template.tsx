@@ -18,10 +18,16 @@ export default function RootTemplate({ children }: PropsWithChildren) {
     offset: ['start end', 'end start']
   });
 
-  const input = isMobile() ? 0.9 : 1.2;
-  const height = useTransform(scrollYProgress, [0, input], [50, 0]);
+  const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname().split('/').pop();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const input = mounted && isMobile() ? 0.9 : 1.2;
+  const height = useTransform(scrollYProgress, [0, input], [50, 0]);
 
   let bgColour = 'bg-background';
   const darkModeScreens = ['contact', 'm31', 'astra'];
@@ -32,7 +38,7 @@ export default function RootTemplate({ children }: PropsWithChildren) {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.cursor = 'default';
       // Only reset scroll on initial page load, not on mobile scroll
@@ -40,7 +46,8 @@ export default function RootTemplate({ children }: PropsWithChildren) {
         window.scrollTo(0, 0);
       }
     }, 800);
-    console.log('loading', isLoading);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (

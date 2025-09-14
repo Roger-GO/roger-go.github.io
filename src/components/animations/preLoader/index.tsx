@@ -17,14 +17,16 @@ const words = [
 export default function PreLoader() {
   const [index, setIndex] = useState(0);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname().split('/').pop();
-  console.log('pathname', pathname);
 
   useEffect(() => {
+    setMounted(true);
     setDimension({ width: window.innerWidth, height: window.innerHeight });
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     if (index == words.length - 1) return;
     setTimeout(
       () => {
@@ -32,7 +34,12 @@ export default function PreLoader() {
       },
       index == 0 ? 1000 : 150
     );
-  }, [index]);
+  }, [index, mounted]);
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return null;
+  }
 
   const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
     dimension.height

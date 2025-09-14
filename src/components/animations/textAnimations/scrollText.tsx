@@ -81,7 +81,7 @@ export function LetterCollision() {
 
   return (
     <div ref={containerRef} className="ml-8 scroll-smooth relative z-0 overflow-hidden h-[80vh] sm:h-screen">
-      <div className="-mt-28 mb-36 flex h-full flex-col justify-end lg:mb-24">
+      <div className="flex h-full flex-col justify-end">
         <div className="flex flex-wrap items-baseline leading-none">
           <LetterDisplay word={theBest} />
           <LetterDisplay word={wayTo} />

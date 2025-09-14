@@ -16,7 +16,7 @@ export default function Description() {
   return (
     <div
       ref={description}
-      className="relative flex flex-col justify-center gap-12 p-8 sm:mt-[200px] sm:flex-row sm:p-20 "
+      className="relative flex flex-col justify-center gap-12 p-8 sm:mt-[50px] sm:flex-row sm:p-20 "
     >
       <div className="space-y-4">
         <p className="m-0 gap-2 leading-snug sm:text-4xl">
