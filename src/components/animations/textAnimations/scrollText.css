@@ -1,0 +1,34 @@
+/* JavaScript-based scroll animation inspired by Bettina Sosa's approach */
+
+.scroll-text-container {
+  /* Container styles for smooth animations */
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-letter {
+  /* Base letter styles - perfectly aligned */
+  display: inline-block;
+  transform: translate3d(0, 0, 0); /* Hardware acceleration */
+  transition: transform 0.1s ease-out; /* Smooth transition for scroll animation */
+  will-change: transform; /* Optimize for animations */
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile optimization - reduce animation intensity */
+@media (max-width: 768px) {
+  .scroll-letter {
+    transition: transform 0.05s ease-out;
+  }
+}
+
+/* Accessibility - respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-letter {
+    transition: none;
+  }
+}
