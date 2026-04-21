@@ -1,20 +1,35 @@
-# Ignore the contents of the _site directory and other cache directories
-_site/
-.sass-cache/
+# Astro / Vite build output
+dist/
+.astro/
 
-# Ignore the directory for local files during development
-local/
+# Dependencies
+node_modules/
 
-# Ignore the Gemfile that is generated
-Gemfile.lock
+# Environment files (never commit)
+.env
+.env.*
+!.env.example
 
-# Ignore files created by npm
-node_modules
-package-lock.json
+# IDE / editor
+.vscode/
+.idea/
 
-# Ignore the vendor file at root level and bundle for alternative installation
-/vendor/
+# OS
+.DS_Store
+Thumbs.db
+
+# Local tool state
+.claude/
+.playwright-mcp/
+.compound-engineering/
 .bundle/
 
-# Ignore folders related to IDEs
-.vscode/
+# Debug screenshots at repo root (public/images/ is kept)
+/*.png
+
+# CV source + root duplicate (public/CV_*.pdf is the served file)
+/CV_Rogelio_Gracia_Otalvaro.pdf
+/CV_Rogelio_Gracia_Otalvaro.tex
+
+# Planning / brainstorming docs (non-essential to site)
+/docs/

@@ -1,0 +1,191 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <nav class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="/" class="nav__logo">Rogelio Gracia</a>
+        <ul class="nav__links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/teaching">Teaching</a></li>
+          <li><a href="/experience">Experience</a></li>
+          <li><a href="/#map">Map</a></li>
+          <li><a href="/#contact" class="nav__cta">Contact</a></li>
+        </ul>
+        <button class="nav__toggle" aria-label="Open menu" id="menu-toggle">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu__close" aria-label="Close menu" id="menu-close">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <a href="/about">About</a>
+      <a href="/research">Research</a>
+      <a href="/teaching">Teaching</a>
+      <a href="/experience">Experience</a>
+      <a href="/#map">Map</a>
+      <a href="/#contact">Contact</a>
+    </div>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="footer">&copy; {new Date().getFullYear()} Rogelio Gracia Otalvaro</footer>
+
+    <!-- Floating contact -->
+    <button class="fab" id="fab" aria-label="Contact" aria-expanded="false">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <div class="fab__pop" id="fab-pop">
+        <a href="mailto:graciaor@erau.edu">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          graciaor@erau.edu
+        </a>
+        <a href="https://www.linkedin.com/in/rogeliogo/" target="_blank" rel="noopener">
+          <svg fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </button>
+
+    <script>
+      // Nav scroll
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav?.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+
+      // Mobile menu
+      document.getElementById('menu-toggle')?.addEventListener('click', () =>
+        document.getElementById('mobile-menu')?.classList.add('open'));
+      document.getElementById('menu-close')?.addEventListener('click', () =>
+        document.getElementById('mobile-menu')?.classList.remove('open'));
+      document.getElementById('mobile-menu')?.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () =>
+          document.getElementById('mobile-menu')?.classList.remove('open')));
+
+      // Floating button
+      const fab = document.getElementById('fab');
+      const pop = document.getElementById('fab-pop');
+      const contact = document.getElementById('contact');
+      fab?.addEventListener('click', (e) => {
+        if (contact) {
+          contact.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          e.stopPropagation();
+          const open = pop?.classList.toggle('open');
+          fab.setAttribute('aria-expanded', String(!!open));
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (!fab?.contains(e.target as Node)) {
+          pop?.classList.remove('open');
+          fab?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { pop?.classList.remove('open'); fab?.setAttribute('aria-expanded', 'false'); }
+      });
+
+      // Scroll progress bar
+      const progress = document.getElementById('scroll-progress');
+      const updateProgress = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? window.scrollY / max : 0;
+        if (progress) progress.style.setProperty('--p', String(ratio));
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      // Reveal on scroll
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal, .stagger').forEach(el => revealObs.observe(el));
+
+      // Stats counter animation
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const animateCount = (el: Element) => {
+        const text = el.textContent?.trim() || '';
+        const match = text.match(/^(\D*)(\d[\d,]*)(.*)$/);
+        if (!match) return;
+        const [, prefix, numStr, suffix] = match;
+        const target = parseInt(numStr.replace(/,/g, ''), 10);
+        if (Number.isNaN(target)) return;
+        if (reduced) { el.textContent = `${prefix}${target.toLocaleString()}${suffix}`; return; }
+        const dur = 1400;
+        const start = performance.now();
+        const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+        const tick = (now: number) => {
+          const t = Math.min((now - start) / dur, 1);
+          const v = Math.round(target * ease(t));
+          (el as HTMLElement).textContent = `${prefix}${v.toLocaleString()}${suffix}`;
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const statObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { animateCount(e.target); statObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.4 });
+      document.querySelectorAll('.stat__num').forEach(el => statObs.observe(el));
+
+      // Cursor spotlight on cards
+      document.querySelectorAll<HTMLElement>('.card').forEach(card => {
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          card.style.setProperty('--my', `${e.clientY - r.top}px`);
+        });
+        card.addEventListener('pointerleave', () => {
+          card.style.setProperty('--mx', `-200px`);
+          card.style.setProperty('--my', `-200px`);
+        });
+      });
+
+      // Nav active state (homepage)
+      if (document.querySelector('.hero')) {
+        const ids = ['about','research','teaching','map','experience','contact'];
+        const links = document.querySelectorAll('.nav__links a:not(.nav__cta)');
+        const secObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              links.forEach(l => {
+                const match = l.getAttribute('href') === '#' + entry.target.id;
+                l.classList.toggle('is-active', match);
+              });
+            }
+          });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) secObs.observe(el);
+        });
+      }
+    </script>
+  </body>
+</html>

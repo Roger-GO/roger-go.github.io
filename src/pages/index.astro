@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorldMap from '../components/WorldMap.tsx';
+---
+
+<BaseLayout
+  title="Rogelio Gracia Otalvaro | Researcher, Professor & Engineer"
+  description="Rogelio Gracia Otalvaro, Ph.D. Visiting Assistant Professor at Embry-Riddle Aeronautical University. Resilience engineering, machine learning, and complex systems research."
+>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__orb hero__orb--3"></div>
+  <div class="hero__content">
+    <img src="/images/profile-photo.jpg" alt="Rogelio Gracia Otalvaro" class="hero__photo" width="110" height="110" loading="eager" />
+    <a href="#contact" class="pill pill--available">
+      <span class="pill__dot"></span>
+      Open to new collaborations &amp; consulting
+    </a>
+    <h1 class="hero__name">Rogelio Gracia<br/>Otalvaro</h1>
+    <p class="hero__sub">Visiting Assistant Professor at Embry-Riddle Aeronautical University. Ph.D. in Computer Science and Electrical Engineering. I make critical infrastructure and complex systems <span class="serif">more resilient</span>, with machine learning and mathematical modeling.</p>
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn--primary">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Get in touch
+      </a>
+      <a href="/CV_Rogelio_Gracia_Otalvaro.pdf" class="btn btn--ghost" target="_blank">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Download CV
+      </a>
+    </div>
+    <div class="hero__social">
+      <a href="https://www.linkedin.com/in/rogeliogo/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://github.com/roger-go" target="_blank" rel="noopener" aria-label="GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+      <a href="mailto:graciaor@erau.edu" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats reveal">
+  <div class="stat"><div class="stat__num">6+</div><div class="stat__label">Publications</div></div>
+  <div class="stat"><div class="stat__num">15</div><div class="stat__label">Countries</div></div>
+  <div class="stat"><div class="stat__num">$86K+</div><div class="stat__label">Research Funding</div></div>
+  <div class="stat"><div class="stat__num">400+</div><div class="stat__label">Dives</div></div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<div class="section reveal" id="about">
+  <p class="section__eyebrow">About</p>
+  <h2 class="section__title">What I <em>do</em></h2>
+  <p class="section__desc">
+    I work on resilience engineering, machine learning, and complex systems analysis at Embry-Riddle Aeronautical University. My research focuses on understanding why critical infrastructure fails under stress and developing methods to prevent it. I've secured over $86K in research funding, published 6+ peer-reviewed papers at venues like INCOSE, ASME, and AIAA, and I teach courses in signals and systems, optimization, and digital communications.
+  </p>
+  <p class="section__desc">
+    Beyond academia, I consult with organizations and advise decision-makers in aerospace, energy, and public infrastructure, translating resilience research into strategies leaders can act on under uncertainty.
+  </p>
+  <a href="/about" class="section__more">Read the full story <span>&rarr;</span></a>
+</div>
+
+<div class="divider"><hr/></div>
+
+<!-- ═══ RESEARCH ═══ -->
+<div class="section reveal" id="research">
+  <p class="section__eyebrow">Research</p>
+  <h2 class="section__title">Recent <em>work</em></h2>
+  <p class="section__desc">
+    My research applies bifurcation theory, ecological network analysis, and reinforcement learning to problems in infrastructure resilience and autonomous systems.
+  </p>
+  <div class="cards stagger">
+    <div class="card">
+      <div class="card__top">
+        <div>
+          <div class="card__role">Democratizing Resilience Analysis: Open-Source Tool Adaptation</div>
+          <div class="card__org">INCOSE International Symposium 2026, Yokohama</div>
+        </div>
+        <div class="card__meta"><span class="badge badge--pub">Accepted</span><br>Jun 2026</div>
+      </div>
+      <p class="card__desc">Adapting open-source tools for multi-stakeholder infrastructure resilience assessment.</p>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div>
+          <div class="card__role">Evaluating Complex System Resilience Through BARD</div>
+          <div class="card__org">Systems Engineering Journal</div>
+        </div>
+        <div class="card__meta"><span class="badge badge--pub">Published</span><br>Apr 2026</div>
+      </div>
+      <p class="card__desc">A bifurcation-based diagnostic framework that quantifies system resilience across absorption, adaptation, and recovery phases.</p>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div>
+          <div class="card__role">SAC Reinforcement Learning for Multi-Drone Search & Rescue</div>
+          <div class="card__org">AIAA SciTech Forum 2026</div>
+        </div>
+        <div class="card__meta"><span class="badge badge--pub">Published</span><br>Jan 2026</div>
+      </div>
+      <p class="card__desc">Soft actor-critic approach for autonomous multi-drone 3D terrain scanning and target detection.</p>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div>
+          <div class="card__role">Bifurcation Analysis for System Resilience: Power Infrastructure</div>
+          <div class="card__org">INCOSE International Symposium 2025</div>
+        </div>
+        <div class="card__meta"><span class="badge badge--pub">Published</span><br>Jun 2025</div>
+      </div>
+    </div>
+  </div>
+  <a href="/research" class="section__more">All publications & projects <span>&rarr;</span></a>
+</div>
+
+<div class="divider"><hr/></div>
+
+<!-- ═══ GRANTS ═══ -->
+<div class="section reveal" id="grants">
+  <p class="section__eyebrow">Grants & Awards</p>
+  <h2 class="section__title">Funded <em>research</em></h2>
+  <p class="section__desc">
+    Over $86K secured across five grants and fellowships to advance resilience research, support conference travel, and fund lab infrastructure.
+  </p>
+  <div class="cards stagger">
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">SCEEE Research Grant</div><div class="card__org">Southeastern Center for Electrical Engineering Education</div></div>
+        <div class="card__meta">2024</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Spark Grant</div><div class="card__org">Embry-Riddle Aeronautical University</div></div>
+        <div class="card__meta">2024&ndash;2025</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Philanthropy Grant</div><div class="card__org">Embry-Riddle Aeronautical University</div></div>
+        <div class="card__meta">2024</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Graduate Symposium Award</div><div class="card__org">Embry-Riddle Aeronautical University</div></div>
+        <div class="card__meta">2024</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Finder Fellowship</div><div class="card__org">Embry-Riddle Aeronautical University</div></div>
+        <div class="card__meta">2023</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr/></div>
+
+<!-- ═══ TEACHING ═══ -->
+<div class="section reveal" id="teaching">
+  <p class="section__eyebrow">Teaching</p>
+  <h2 class="section__title">In the <em>classroom</em></h2>
+  <p class="section__desc">
+    Currently teaching three courses at Embry-Riddle as Visiting Assistant Professor. Previously a GTA for four years, where I designed two new graduate courses and received a 3.86/4.0 teaching effectiveness rating.
+  </p>
+  <div class="cards stagger">
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Signals and Systems</div><div class="card__org">CEC 315 &middot; 50 students</div></div>
+        <div class="card__meta">Spring 2026</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Optimization in Systems Engineering</div><div class="card__org">SYS 303</div></div>
+        <div class="card__meta">Spring 2026</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Digital Communications</div><div class="card__org">EE 620 &middot; Graduate</div></div>
+        <div class="card__meta">Spring 2026</div>
+      </div>
+    </div>
+  </div>
+  <a href="/teaching" class="section__more">Full teaching & education <span>&rarr;</span></a>
+</div>
+
+<!-- ═══ MAP ═══ -->
+<section class="map-section reveal" id="map">
+  <div class="map-section__inner">
+    <p class="section__eyebrow">Global reach</p>
+    <h2 class="section__title">15 countries and <em>counting</em></h2>
+    <p class="section__desc">Research presented on four continents, professional experience across Europe and the Americas, PADI Divemaster with 400+ dives worldwide. Click any marker for details.</p>
+    <WorldMap client:only="react" />
+    <div class="map-legend">
+      <div class="map-legend__item"><span class="map-legend__dot" style="background:var(--c-heritage)"></span> Heritage</div>
+      <div class="map-legend__item"><span class="map-legend__dot" style="background:var(--c-education)"></span> Education</div>
+      <div class="map-legend__item"><span class="map-legend__dot" style="background:var(--c-work)"></span> Work</div>
+      <div class="map-legend__item"><span class="map-legend__dot" style="background:var(--c-conference)"></span> Conference</div>
+      <div class="map-legend__item"><span class="map-legend__dot" style="background:var(--c-diving)"></span> Diving</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr/></div>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<div class="section reveal" id="experience">
+  <p class="section__eyebrow">Experience</p>
+  <h2 class="section__title">Career so <em>far</em></h2>
+  <div class="cards stagger">
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Visiting Assistant Professor</div><div class="card__org">Embry-Riddle Aeronautical University</div></div>
+        <div class="card__meta">Jan 2026&ndash;Present<br>Daytona Beach, FL</div>
+      </div>
+      <ul class="card__list">
+        <li>Teaching signals & systems, optimization, digital communications</li>
+        <li>Research in resilience engineering, multi-agent RL, LLM fine-tuning</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Graduate Research & Teaching Assistant</div><div class="card__org">Embry-Riddle Aeronautical University</div></div>
+        <div class="card__meta">Aug 2021&ndash;Dec 2025<br>Daytona Beach, FL</div>
+      </div>
+      <ul class="card__list">
+        <li>Led ML initiatives in the BID4R lab across multiple research teams</li>
+        <li>10+ publications at INCOSE, ASME, and AIAA conferences</li>
+        <li>Taught 150+ students; 3.86/4.0 effectiveness rating</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Associate Quantitative Analyst</div><div class="card__org">IMAGINE + INVERSION &middot; Madrid</div></div>
+        <div class="card__meta">Feb&ndash;Aug 2021</div>
+      </div>
+      <ul class="card__list">
+        <li>Built quantitative models for portfolio optimization and risk assessment</li>
+        <li>Automated reporting pipelines in Python and SQL for investment teams</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__top">
+        <div><div class="card__role">Project Manager</div><div class="card__org">BALLESOL &middot; Madrid</div></div>
+        <div class="card__meta">Oct 2018&ndash;Jan 2020</div>
+      </div>
+      <ul class="card__list">
+        <li>Led cross-functional initiatives across operations, IT, and facilities</li>
+        <li>Drove process redesign and KPI tracking across 180+ healthcare facilities</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 32px; font-size: 0.95rem; font-weight: 700; margin-bottom: 14px; color: var(--text-2);">Skills</h3>
+  <div class="skills stagger">
+    <div>
+      <div class="skill-cat">Languages</div>
+      <div class="skill-items">
+        <span>Python</span><span>MATLAB</span><span>C++</span><span>SQL</span>
+        <span>JavaScript</span><span>TypeScript</span><span>R</span><span>Julia</span>
+        <span>Bash</span><span>LaTeX</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-cat">ML / AI</div>
+      <div class="skill-items">
+        <span>PyTorch</span><span>TensorFlow</span><span>JAX</span>
+        <span>scikit-learn</span><span>Hugging Face</span><span>Transformers</span>
+        <span>Reinforcement Learning</span><span>LLM fine-tuning</span>
+        <span>LangChain</span><span>MLflow</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-cat">Engineering</div>
+      <div class="skill-items">
+        <span>Resilience Engineering</span><span>Bifurcation Theory</span>
+        <span>Complex Systems</span><span>Ecological Network Analysis</span>
+        <span>Control Theory</span><span>Optimization</span>
+        <span>Signal Processing</span><span>Systems Engineering</span>
+        <span>Digital Communications</span><span>Multi-Agent Systems</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-cat">Tools & Platforms</div>
+      <div class="skill-items">
+        <span>AnyLogic</span><span>Simulink</span><span>Power BI</span>
+        <span>Tableau</span><span>GCP</span><span>AWS</span>
+        <span>Docker</span><span>Git</span><span>Jupyter</span><span>React</span>
+        <span>Linux</span>
+      </div>
+    </div>
+  </div>
+  <a href="/experience" class="section__more">Full experience & skills <span>&rarr;</span></a>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<div class="section section--full reveal" id="contact">
+  <div class="contact-section">
+    <h2>Get in touch</h2>
+    <p>Interested in collaborating or have questions about my research? I'd be happy to hear from you.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:graciaor@erau.edu" class="btn btn--dark">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        graciaor@erau.edu
+      </a>
+      <a href="https://www.linkedin.com/in/rogeliogo/" target="_blank" rel="noopener" class="btn btn--ghost">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+</BaseLayout>

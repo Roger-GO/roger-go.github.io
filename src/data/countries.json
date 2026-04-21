@@ -1,0 +1,129 @@
+[
+  {
+    "name": "Colombia",
+    "coordinates": [4.5709, -74.2973],
+    "categories": ["Heritage"],
+    "details": [
+      { "title": "Second Nationality", "description": "Colombian heritage and cultural roots." }
+    ]
+  },
+  {
+    "name": "Spain",
+    "coordinates": [40.4168, -3.7038],
+    "categories": ["Heritage", "Education", "Work", "Diving"],
+    "details": [
+      { "title": "ICAI Universidad Pontificia de Comillas", "description": "Bachelor's and Master's degrees in Industrial Technologies Engineering (2015-2022), Madrid." },
+      { "title": "BALLESOL", "description": "Project Manager — centralized business model reducing costs by 30% across 45+ sites (2018-2020)." },
+      { "title": "IMAGINE + INVERSION", "description": "Associate Quantitative Analyst — data mining and financial modeling for tech startups (2021)." },
+      { "title": "Diving", "description": "Recreational diving in Spanish waters." }
+    ]
+  },
+  {
+    "name": "United States",
+    "coordinates": [29.1872, -81.0482],
+    "categories": ["Education", "Work", "Conference", "Diving"],
+    "details": [
+      { "title": "Embry-Riddle Aeronautical University", "description": "Ph.D. in CS & EE (2023-2025), M.S. in Mechanical Engineering (2021-2022). Now Visiting Assistant Professor." },
+      { "title": "Conferences", "description": "Presentations in Orlando and Washington D.C." },
+      { "title": "Diving", "description": "Diving in Florida waters." }
+    ]
+  },
+  {
+    "name": "Ireland",
+    "coordinates": [53.3498, -6.2603],
+    "categories": ["Conference"],
+    "details": [
+      { "title": "INCOSE Conference", "description": "Research presentation at INCOSE International Symposium in Dublin." }
+    ]
+  },
+  {
+    "name": "Canada",
+    "coordinates": [45.4215, -75.6972],
+    "categories": ["Conference"],
+    "details": [
+      { "title": "INCOSE Conference", "description": "Research presentation at INCOSE International Symposium in Ottawa." }
+    ]
+  },
+  {
+    "name": "Japan",
+    "coordinates": [35.6762, 139.6503],
+    "categories": ["Conference", "Diving"],
+    "details": [
+      { "title": "INCOSE IS 2026", "description": "Upcoming presentation at INCOSE International Symposium 2026 in Yokohama (Summer 2026)." },
+      { "title": "Diving", "description": "Diving in Japanese waters." }
+    ]
+  },
+  {
+    "name": "Indonesia",
+    "coordinates": [-8.3405, 115.092],
+    "categories": ["Work", "Diving"],
+    "details": [
+      { "title": "Professional Diving Instruction", "description": "PADI Divemaster — professional scuba diving instruction." },
+      { "title": "Diving", "description": "Extensive diving across Indonesian archipelago." }
+    ]
+  },
+  {
+    "name": "Mexico",
+    "coordinates": [23.6345, -102.5528],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Diving in cenotes and Caribbean reefs." }
+    ]
+  },
+  {
+    "name": "Egypt",
+    "coordinates": [26.8206, 30.8025],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Red Sea diving — coral reefs and marine life." }
+    ]
+  },
+  {
+    "name": "Maldives",
+    "coordinates": [3.2028, 73.2207],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Diving with manta rays and whale sharks in crystal-clear waters." }
+    ]
+  },
+  {
+    "name": "Thailand",
+    "coordinates": [15.87, 100.9925],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Diving in the Andaman Sea and Gulf of Thailand." }
+    ]
+  },
+  {
+    "name": "Honduras",
+    "coordinates": [14.0723, -87.1921],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Diving in Roatan and the Bay Islands." }
+    ]
+  },
+  {
+    "name": "Costa Rica",
+    "coordinates": [9.7489, -83.7534],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Pacific and Caribbean coast diving." }
+    ]
+  },
+  {
+    "name": "Philippines",
+    "coordinates": [12.8797, 121.774],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Diving in diverse Philippine reef systems." }
+    ]
+  },
+  {
+    "name": "Mozambique",
+    "coordinates": [-18.6657, 35.5296],
+    "categories": ["Diving"],
+    "details": [
+      { "title": "Diving", "description": "Whale shark encounters and pristine reef diving." }
+    ]
+  }
+]
