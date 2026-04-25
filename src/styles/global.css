@@ -640,3 +640,125 @@ img { max-width: 100%; height: auto; display: block; }
   .skills { grid-template-columns: 1fr; }
   .map-container { height: 280px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   DYNAMICS BACKDROPS
+   Shared between .section.has-bg (home) and .sub.has-bg (subpages).
+   Renders an animated bifurcation / phase-portrait canvas behind
+   the content. Driven by /dynamics.js.
+   ═══════════════════════════════════════════════════════ */
+
+.has-bg { position: relative; isolation: isolate; }
+
+.has-bg > .section__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  /* Both auto so the abspos containing block is the parent's padding box,
+     not a grid cell when the parent is also a grid container. */
+  grid-column: auto;
+  grid-row: auto;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .85;
+  mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 60%, transparent 100%);
+}
+.has-bg > .section__bg--strong { opacity: 1; }
+
+.section__bg canvas {
+  position: absolute;
+  top: 50%;
+  width: 110%;
+  height: 105%;
+}
+.section__bg[data-align="left"]  canvas { left: 0;    transform: translate(0, -50%); }
+.section__bg[data-align="right"] canvas { left: auto; right: 0; transform: translate(0, -50%); }
+
+.has-bg > .section__bg--flip > canvas {
+  transform: translate(0, -50%) scaleX(-1);
+}
+.has-bg > .section__bg--wide > canvas { width: 145%; }
+.has-bg > .section__bg--wide[data-align="left"]  > canvas { left: -12%; right: auto; }
+.has-bg > .section__bg--wide[data-align="right"] > canvas { right: -12%; left: auto; }
+
+@media (max-width: 640px) {
+  .has-bg > .section__bg { opacity: .5; }
+  .has-bg > .section__bg--wide > canvas { width: 125%; }
+}
+
+/* Per-section dynamics tag — small badge naming the bifurcation */
+.has-bg > .dyn-tag {
+  grid-column: 1;          /* sticks under .section__title in grid layouts */
+  align-self: start;
+  position: sticky;
+  top: 200px;
+  z-index: 2;
+  margin-top: 14px;
+  max-width: 240px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 10px 12px;
+  background: rgba(10, 10, 10, .62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(94, 200, 255, .28);
+  border-radius: 10px;
+  pointer-events: none;
+}
+.dyn-tag__kicker {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  line-height: 1;
+}
+.dyn-tag__name {
+  font-family: var(--font);
+  font-size: .88rem;
+  font-weight: 600;
+  color: #5EC8FF;
+  line-height: 1.2;
+}
+.dyn-tag__sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: .78rem;
+  color: var(--text-2);
+  line-height: 1.25;
+}
+
+/* On subpages (.sub.has-bg) the tag flows below the title rather than sitting
+   in a grid column. Reset grid placement and let it sit inline. */
+.sub.has-bg > .dyn-tag {
+  position: relative;
+  top: auto;
+  margin: 6px 0 24px;
+  max-width: 360px;
+  align-self: auto;
+}
+
+@media (max-width: 899px) {
+  .has-bg > .dyn-tag {
+    grid-column: auto;
+    position: relative;
+    top: auto;
+    margin: 10px 0 20px;
+  }
+}
+
+/* Translucent cards over dynamics backdrops so curves show through */
+.has-bg .card {
+  background: rgba(10, 10, 10, .04);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+.has-bg .card:hover {
+  background: rgba(10, 10, 10, .18);
+  border-color: rgba(94, 200, 255, .28);
+}
+

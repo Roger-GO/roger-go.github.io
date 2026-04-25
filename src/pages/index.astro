@@ -375,17 +375,7 @@ import WorldMap from '../components/WorldMap.tsx';
 </div>
 
 <style is:global>
-  /* ═══ Translucent cards over dynamics backdrops ═══ */
-  .section.has-bg .card {
-    background: rgba(10, 10, 10, .04);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border: 1px solid rgba(255, 255, 255, .08);
-  }
-  .section.has-bg .card:hover {
-    background: rgba(10, 10, 10, .18);
-    border-color: rgba(94, 200, 255, .28);
-  }
+  /* Translucent .has-bg .card styles in global.css */
 
   /* ═══ Scroll note below hero social links ═══ */
   .hero__scroll-note {
@@ -399,58 +389,7 @@ import WorldMap from '../components/WorldMap.tsx';
     animation: fadeUp .8s var(--ease) .45s both;
   }
 
-  /* ═══ Per-section dynamics tag — below the (sticky) title, also sticky ═══ */
-  .section.has-bg > .dyn-tag {
-    grid-column: 1;                 /* left column, under the title */
-    align-self: start;
-    position: sticky;
-    top: 200px;                     /* title sticks at 96, leaves room for up to ~2 lines */
-    z-index: 2;
-    margin-top: 14px;
-    max-width: 240px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-    padding: 10px 12px;
-    background: rgba(10, 10, 10, .62);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(94, 200, 255, .28);
-    border-radius: 10px;
-    pointer-events: none;
-  }
-  .dyn-tag__kicker {
-    font-family: var(--font-mono);
-    font-size: .58rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--text-3);
-    line-height: 1;
-  }
-  .dyn-tag__name {
-    font-family: var(--font);
-    font-size: .88rem;
-    font-weight: 600;
-    color: #5EC8FF;
-    line-height: 1.2;
-  }
-  .dyn-tag__sub {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: .78rem;
-    color: var(--text-2);
-    line-height: 1.25;
-  }
-  @media (max-width: 899px) {
-    /* On stacked layouts (no left column), tag flows inline under the title */
-    .section.has-bg > .dyn-tag {
-      grid-column: auto;
-      position: relative;
-      top: auto;
-      margin: 10px 0 20px;
-    }
-  }
+  /* Dynamics backdrop and dyn-tag styles now live in global.css so subpages share them */
 
   /* ═══ Hero two-column split ═══ */
   .hero__content--split {
@@ -549,55 +488,7 @@ import WorldMap from '../components/WorldMap.tsx';
     margin-top: 4px;
   }
 
-  /* ═══ Section dynamics backdrops (light electric blue) ═══ */
-  /* NOTE: no overflow:hidden here — that would break position:sticky on .section__title.
-     The .section__bg itself handles canvas overflow via its own clip. */
-  .section.has-bg { position: relative; isolation: isolate; }
-  /* No forced position:relative on children — it would override .section__title's
-     position:sticky (deployed behavior). `isolation: isolate` keeps stacking local,
-     and bg's z-index:0 + natural paint order keeps content above. */
-  .section.has-bg > .section__bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;             /* clip the 110%+ canvas without affecting sticky */
-    /* Both auto so the abspos containing block becomes the section's padding box,
-       not the grid cell the parent rule would assign. */
-    grid-column: auto;
-    grid-row: auto;
-    z-index: 0;
-    pointer-events: none;
-    opacity: .45;
-    mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, #000 35%, transparent 90%);
-    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, #000 35%, transparent 90%);
-  }
-  .section__bg canvas {
-    position: absolute;
-    top: 50%;
-    width: 110%;
-    height: 105%;
-    mix-blend-mode: screen;
-  }
-  .section__bg[data-align="left"]  canvas { left: 0;    transform: translate(0, -50%); }
-  .section__bg[data-align="right"] canvas { left: auto; right: 0; transform: translate(0, -50%); }
-
-  /* Stronger backdrop for About / Research */
-  .section.has-bg > .section__bg--strong { opacity: .65; }
-
-  /* Horizontal flip (e.g. logistic map with chaos on the left) */
-  .section.has-bg > .section__bg--flip > canvas { transform: translate(0, -50%) scaleX(-1); }
-
-  /* Wider diagram for Experience — canvas extends past both edges */
-  .section.has-bg > .section__bg--wide > canvas {
-    width: 145%;
-  }
-  .section.has-bg > .section__bg--wide[data-align="left"] > canvas  { left: -12%; right: auto; }
-  .section.has-bg > .section__bg--wide[data-align="right"] > canvas { right: -12%; left: auto; }
-
-  @media (max-width: 640px) {
-    .section__bg { opacity: .22; }
-    .section.has-bg > .section__bg--strong { opacity: .32; }
-    .section.has-bg > .section__bg--wide > canvas { width: 125%; }
-  }
+  /* Section dynamics backdrops styled in global.css (.has-bg > .section__bg) */
 
   /* ═══ Marquee (dark) ═══ */
   .marquee {
@@ -649,7 +540,5 @@ import WorldMap from '../components/WorldMap.tsx';
     .marquee__track { font-size: 1.05rem; animation-duration: 32s; }
   }
 </style>
-
-<script is:inline src="/dynamics.js"></script>
 
 </BaseLayout>
