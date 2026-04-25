@@ -33,6 +33,8 @@
     const duration = parseInt(canvas.dataset.duration || DURATION, 10);
     const density = parseFloat(canvas.dataset.density || DENSITY);
     const scaleMul = parseFloat(canvas.dataset.scaleMul || '1');
+    const orientation = canvas.dataset.orientation || 'horizontal';
+    const isVertical = orientation === 'vertical';
     const color = canvas.dataset.color || accentFromCSS();
     const isRTL = direction === 'rtl';
 
@@ -50,7 +52,19 @@
     const render = () => {
       ctx.clearRect(0, 0, W, H);
       const drawFn = DRAWERS[kind];
-      if (drawFn) drawFn(ctx, W, H, color, progress, isRTL, density, scaleMul);
+      if (!drawFn) return;
+      if (isVertical) {
+        // Rotate context 90° clockwise. Logical x-axis (bifurcation parameter)
+        // ends up running top-to-bottom on screen; logical y becomes screen-x.
+        // Pass swapped dimensions so the drawer thinks W=H_canvas, H=W_canvas.
+        ctx.save();
+        ctx.translate(W, 0);
+        ctx.rotate(Math.PI / 2);
+        drawFn(ctx, H, W, color, progress, isRTL, density, scaleMul);
+        ctx.restore();
+      } else {
+        drawFn(ctx, W, H, color, progress, isRTL, density, scaleMul);
+      }
     };
 
     const animate = (t) => {

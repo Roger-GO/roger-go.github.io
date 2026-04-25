@@ -667,12 +667,15 @@ img { max-width: 100%; height: auto; display: block; }
 /* --strong is misnamed — it's actually a softer modifier for backdrops
    that don't need the new bright default (used by the About logistic). */
 .has-bg > .section__bg--strong { opacity: .45; }
+.has-bg > .section__bg--soft   { opacity: .30; }
 
 .section__bg canvas {
   position: absolute;
   top: 50%;
+  left: 50%;
   width: 110%;
   height: 105%;
+  transform: translate(-50%, -50%);     /* default: centered both axes */
 }
 .section__bg[data-align="left"]  canvas { left: 0;    transform: translate(0, -50%); }
 .section__bg[data-align="right"] canvas { left: auto; right: 0; transform: translate(0, -50%); }
