@@ -664,7 +664,9 @@ img { max-width: 100%; height: auto; display: block; }
   mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 60%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 60%, transparent 100%);
 }
-.has-bg > .section__bg--strong { opacity: 1; }
+/* --strong = the original "About" backdrop weight, intentionally softer than
+   the new default so the logistic map sits at its earlier visual level. */
+.has-bg > .section__bg--strong { opacity: .65; }
 
 .section__bg canvas {
   position: absolute;

@@ -122,17 +122,17 @@
       const x = t * W;
       const ampScale = H * 0.35;
       if (mu < 0) {
-        ctx.fillStyle = hexA(color, 0.32);
-        ctx.fillRect(x, midY, 1, 1);
+        ctx.fillStyle = hexA(color, 0.55);
+        ctx.fillRect(x, midY, 1.4, 1.4);
       } else {
         const amp = Math.sqrt(mu);
         const yOff = amp * ampScale;
-        ctx.fillStyle = hexA(color, 0.40);
-        ctx.fillRect(x, midY - yOff, 1, 1.5);
-        ctx.fillRect(x, midY + yOff, 1, 1.5);
+        ctx.fillStyle = hexA(color, 0.70);
+        ctx.fillRect(x, midY - yOff, 1.4, 2.2);
+        ctx.fillRect(x, midY + yOff, 1.4, 2.2);
         if (i % 4 === 0) {
-          ctx.fillStyle = hexA(color, 0.15);
-          ctx.fillRect(x, midY, 1, 1);
+          ctx.fillStyle = hexA(color, 0.28);
+          ctx.fillRect(x, midY, 1.4, 1.4);
         }
       }
     }
@@ -160,14 +160,14 @@
       const y = cy + Math.sin(theta) * r;
       if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = hexA(color, 0.18);
-    ctx.lineWidth = 0.8;
+    ctx.strokeStyle = hexA(color, 0.42);
+    ctx.lineWidth = 1.4;
     ctx.stroke();
     if (mu > 0) {
       ctx.beginPath();
       ctx.arc(cx, cy, target, 0, Math.PI * 2);
-      ctx.strokeStyle = hexA(color, 0.28 * t);
-      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = hexA(color, 0.60 * t);
+      ctx.lineWidth = 2.0;
       ctx.stroke();
     }
   }
